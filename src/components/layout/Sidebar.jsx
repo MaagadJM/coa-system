@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 import { useProjects } from '../../hooks/useProjects'
@@ -36,10 +37,35 @@ export function Sidebar() {
     navigate(ROUTES.LOGIN)
   }
 
+  const [confirmingLogout, setConfirmingLogout] = useState(false)
+
   const navItems = NAV_ITEMS[user?.role] ?? []
   const badgeCount = user?.role === ROLES.ATL ? unreadCount(user.id) : 0
 
   return (
+    <>
+    {confirmingLogout && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+        <div className="bg-white rounded-2xl shadow-xl w-full max-w-sm mx-4 p-6">
+          <h3 className="text-base font-semibold text-gray-800 mb-1">Sign out</h3>
+          <p className="text-sm text-gray-500 mb-6">Are you sure you want to sign out of CAP-In?</p>
+          <div className="flex gap-3">
+            <button
+              onClick={() => setConfirmingLogout(false)}
+              className="flex-1 px-4 py-2.5 rounded-lg text-sm font-medium border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={handleLogout}
+              className="flex-1 px-4 py-2.5 rounded-lg text-sm font-medium bg-red-600 hover:bg-red-700 text-white transition-colors"
+            >
+              Yes, sign out
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
     <aside className="w-64 h-screen sticky top-0 bg-blue-900 text-white flex flex-col overflow-y-auto">
       <div className="px-6 py-5 border-b border-blue-800">
         <p className="text-xs uppercase tracking-widest text-blue-300 mb-1">Republic of the Philippines</p>
@@ -80,12 +106,13 @@ export function Sidebar() {
           )}
         </div>
         <button
-          onClick={handleLogout}
+          onClick={() => setConfirmingLogout(true)}
           className="w-full text-left px-3 py-2 rounded-lg text-sm text-blue-200 bg-white/10 hover:bg-white/20 hover:text-white transition-colors"
         >
           Sign Out
         </button>
       </div>
     </aside>
+    </>
   )
 }

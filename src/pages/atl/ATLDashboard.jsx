@@ -17,21 +17,26 @@ export function ATLDashboard() {
     navigate(ROUTES.PROJECTS)
   }
 
+  const firstName = user.name.split(' ')[0]
+  const hour = new Date().getHours()
+  const greeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening'
+
   return (
     <DashboardLayout>
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">Welcome, {user.name}</h2>
-        <p className="text-sm text-gray-500 mt-1">Audit Team Leader</p>
+      <div className="mb-8 rounded-2xl bg-linear-to-br from-blue-900 to-blue-700 px-8 py-6 text-white">
+        <p className="text-sm text-blue-300 mb-1">Audit Team Leader</p>
+        <h2 className="text-2xl font-bold">{greeting}, {firstName}!</h2>
+        <p className="text-sm text-blue-200 mt-1">Review registered projects and log your audit actions.</p>
       </div>
 
       {newCount > 0 && (
-        <div className="mb-5 flex items-center justify-between bg-blue-50 border border-blue-200 rounded-xl px-5 py-4">
+        <div className="mb-6 flex items-center justify-between bg-blue-50 border-l-4 border-blue-500 rounded-r-xl px-5 py-4">
           <p className="text-sm text-blue-800 font-medium">
             {newCount} new project{newCount > 1 ? 's' : ''} registered and awaiting your review.
           </p>
           <button
             onClick={handleViewProjects}
-            className="text-sm font-medium text-blue-700 hover:text-blue-900 underline"
+            className="text-sm font-semibold text-blue-700 hover:text-blue-900 underline"
           >
             View Projects
           </button>
@@ -39,14 +44,14 @@ export function ATLDashboard() {
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <StatCard label="Total Projects" value={projects.length} />
-        <StatCard label="New Notifications" value={newCount} highlight={newCount > 0} />
-        <StatCard label="Complaints" value="—" />
+        <StatCard label="Total Projects" value={projects.length} color="blue" />
+        <StatCard label="New Notifications" value={newCount} color={newCount > 0 ? 'red' : 'blue'} />
+        <StatCard label="Complaints" value="—" color="blue" />
       </div>
 
       {unreadNotes.length > 0 && (
         <div className="mt-8 bg-white rounded-xl border border-gray-200 p-6">
-          <h3 className="text-base font-semibold text-gray-700 mb-4">Recent Notifications</h3>
+          <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">Recent Notifications</h3>
           <ul className="space-y-2">
             {unreadNotes.slice(0, 5).map((note) => (
               <li
@@ -69,11 +74,18 @@ export function ATLDashboard() {
   )
 }
 
-function StatCard({ label, value, highlight }) {
+function StatCard({ label, value, color = 'blue' }) {
+  const accent = {
+    blue: 'border-t-blue-600',
+    green: 'border-t-green-500',
+    amber: 'border-t-amber-500',
+    red: 'border-t-red-500',
+    purple: 'border-t-purple-500',
+  }
   return (
-    <div className={`rounded-xl border p-5 ${highlight ? 'bg-blue-50 border-blue-200' : 'bg-white border-gray-200'}`}>
-      <p className="text-sm text-gray-500">{label}</p>
-      <p className={`text-3xl font-bold mt-1 ${highlight ? 'text-blue-700' : 'text-blue-900'}`}>{value}</p>
+    <div className={`bg-white rounded-xl border border-gray-200 border-t-4 ${accent[color]} p-5`}>
+      <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide">{label}</p>
+      <p className="text-4xl font-bold text-gray-900 mt-2">{value}</p>
     </div>
   )
 }

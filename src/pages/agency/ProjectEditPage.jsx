@@ -37,7 +37,10 @@ export function ProjectEditPage() {
           <p className="text-sm text-gray-500 mt-1">{project.projectName}</p>
         </div>
 
-        <div className="bg-white rounded-xl border border-gray-200 p-6">
+        <div
+          className="rounded-3xl p-8"
+          style={{ background: '#f0f0f0', boxShadow: '20px 20px 60px #d1d1d1, -20px -20px 60px #ffffff' }}
+        >
           <ProjectForm
             defaultValues={project}
             onSubmit={handleSubmit}
