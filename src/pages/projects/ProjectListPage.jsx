@@ -1,16 +1,27 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { DashboardLayout } from '../../components/layout/DashboardLayout'
+import { ProjectForm } from '../../components/projects/ProjectForm'
 import { ProjectStatusBadge } from '../../components/projects/ProjectStatusBadge'
 import { useAuth } from '../../hooks/useAuth'
 import { useProjects } from '../../hooks/useProjects'
-import { ROLES, ROUTES } from '../../lib/constants'
+import { ROLES } from '../../lib/constants'
 
 export function ProjectListPage() {
-  const { projects } = useProjects()
+  const { projects, addProject } = useProjects()
   const { user } = useAuth()
   const navigate = useNavigate()
+  const [showModal, setShowModal] = useState(false)
+  const [formLoading, setFormLoading] = useState(false)
 
   const canRegister = user.role === ROLES.AGENCY_ENCODER
+
+  function handleRegisterSubmit(data) {
+    setFormLoading(true)
+    addProject(data, { id: user.id, name: user.name, agency: user.agency })
+    setFormLoading(false)
+    setShowModal(false)
+  }
 
   const visibleProjects =
     user.role === ROLES.AGENCY_ENCODER
@@ -27,6 +38,23 @@ export function ProjectListPage() {
 
   return (
     <DashboardLayout>
+      {/* Register Project Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
+          <div className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl p-8 bg-gray-100">
+            <div className="mb-6">
+              <h3 className="text-xl font-bold text-gray-800">Register New Project</h3>
+              <p className="text-sm text-gray-500 mt-1">Encode project details as soon as the contract award has been made.</p>
+            </div>
+            <ProjectForm
+              onSubmit={handleRegisterSubmit}
+              onCancel={() => setShowModal(false)}
+              loading={formLoading}
+            />
+          </div>
+        </div>
+      )}
+
       <div className="flex items-center justify-between mb-6">
         <div>
           <h2 className="text-2xl font-bold text-gray-800">Infrastructure Projects</h2>
@@ -34,10 +62,14 @@ export function ProjectListPage() {
             {visibleProjects.length} project{visibleProjects.length !== 1 ? 's' : ''} found
           </p>
         </div>
-        {canRegister && (
+        {canRegister && visibleProjects.length > 0 && (
           <button
-            onClick={() => navigate(ROUTES.PROJECT_NEW)}
-            className="px-4 py-2.5 bg-blue-800 text-white text-sm font-medium rounded-lg hover:bg-blue-900 transition-colors"
+            onClick={() => setShowModal(true)}
+            className="neu-btn-primary px-4 py-2.5 text-white text-sm font-semibold rounded-xl"
+            style={{
+              background: 'linear-gradient(145deg, #1e3a8a, #2563eb)',
+              boxShadow: '5px 5px 12px #c8c8c8, -5px -5px 12px #ffffff',
+            }}
           >
             + Register Project
           </button>
@@ -55,8 +87,12 @@ export function ProjectListPage() {
           <p className="text-gray-400 text-xs mt-1">Projects will appear here once registered.</p>
           {canRegister && (
             <button
-              onClick={() => navigate(ROUTES.PROJECT_NEW)}
-              className="mt-5 px-5 py-2.5 bg-blue-900 text-white text-sm font-medium rounded-lg hover:bg-blue-800 transition-colors"
+              onClick={() => setShowModal(true)}
+              className="neu-btn-primary mt-5 px-5 py-2.5 text-white text-sm font-semibold rounded-xl"
+              style={{
+                background: 'linear-gradient(145deg, #1e3a8a, #2563eb)',
+                boxShadow: '5px 5px 12px #c8c8c8, -5px -5px 12px #ffffff',
+              }}
             >
               Register First Project
             </button>

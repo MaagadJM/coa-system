@@ -11,7 +11,6 @@ const NAV_ITEMS = {
   agency_encoder: [
     { label: 'Dashboard', to: ROUTES.AGENCY, end: true },
     { label: 'Projects', to: ROUTES.PROJECTS, end: true },
-    { label: 'Register Project', to: ROUTES.PROJECT_NEW, end: true },
   ],
   atl: [
     { label: 'Dashboard', to: ROUTES.ATL, end: true },
@@ -58,7 +57,8 @@ export function Sidebar() {
             </button>
             <button
               onClick={handleLogout}
-              className="flex-1 px-4 py-2.5 rounded-lg text-sm font-medium bg-red-600 hover:bg-red-700 text-white transition-colors"
+              className="neu-btn-primary flex-1 px-4 py-2.5 rounded-lg text-sm font-medium text-white"
+              style={{ background: 'linear-gradient(145deg, #b91c1c, #ef4444)' }}
             >
               Yes, sign out
             </button>

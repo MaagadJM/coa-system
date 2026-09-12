@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Global cursor */
+button, [role="button"] {
+  cursor: pointer;
+}
+
 /* Neumorphic button hover effects */
 .neu-btn {
   transition: box-shadow 0.2s ease, transform 0.15s ease;
