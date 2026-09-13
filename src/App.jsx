@@ -5,7 +5,7 @@ import { AppRouter } from './routes/AppRouter'
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/coa-system">
       <AuthProvider>
         <ProjectProvider>
           <AppRouter />
