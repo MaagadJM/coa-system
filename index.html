@@ -8,6 +8,19 @@
     <meta name="description" content="CAP-In — Collaborative Audit Platform for Infrastructure. A web application for the Commission on Audit (COA) to manage and monitor government infrastructure projects." />
     <meta name="developer" content="Jude Michael Maagad" />
     <title>CAP-In | Collaborative Audit Platform for Infrastructure</title>
+    <script>
+      // Restore the path that was encoded by 404.html redirect
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search.slice(1).split('&').map(function (s) {
+            return s.replace(/~and~/g, '&');
+          }).join('?');
+          window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location));
+    </script>
   </head>
   <body>
     <div id="root"></div>
