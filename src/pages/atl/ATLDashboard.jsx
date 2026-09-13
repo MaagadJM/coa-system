@@ -24,19 +24,19 @@ export function ATLDashboard() {
   return (
     <DashboardLayout>
       <div className="mb-8 rounded-2xl bg-linear-to-br from-blue-900 to-blue-700 px-8 py-6 text-white">
-        <p className="text-sm text-blue-300 mb-1">Audit Team Leader</p>
-        <h2 className="text-2xl font-bold">{greeting}, {firstName}!</h2>
-        <p className="text-sm text-blue-200 mt-1">Review registered projects and log your audit actions.</p>
+        <p className="text-base text-blue-300 mb-1">Audit Team Leader</p>
+        <h2 className="text-3xl font-bold">{greeting}, {firstName}!</h2>
+        <p className="text-base text-blue-200 mt-1">Review registered projects and log your audit actions.</p>
       </div>
 
       {newCount > 0 && (
         <div className="mb-6 flex items-center justify-between bg-blue-50 border-l-4 border-blue-500 rounded-r-xl px-5 py-4">
-          <p className="text-sm text-blue-800 font-medium">
+          <p className="text-base text-blue-800 font-medium">
             {newCount} new project{newCount > 1 ? 's' : ''} registered and awaiting your review.
           </p>
           <button
             onClick={handleViewProjects}
-            className="text-sm font-semibold text-blue-700 hover:text-blue-900 underline"
+            className="text-base font-semibold text-blue-700 hover:text-blue-900 underline"
           >
             View Projects
           </button>
@@ -50,18 +50,18 @@ export function ATLDashboard() {
       </div>
 
       {unreadNotes.length > 0 && (
-        <div className="mt-8 bg-white rounded-xl border border-gray-200 p-6">
-          <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">Recent Notifications</h3>
+        <div className="mt-8 rounded-xl p-6" style={{ background: '#e8e8e8', boxShadow: '8px 8px 20px #d1d1d1, -8px -8px 20px #ffffff' }}>
+          <h3 className="text-base font-semibold text-gray-500 uppercase tracking-wide mb-4">Recent Notifications</h3>
           <ul className="space-y-2">
             {unreadNotes.slice(0, 5).map((note) => (
               <li
                 key={note.id}
-                className="flex items-start gap-3 text-sm text-gray-700 py-2 border-b border-gray-100 last:border-0"
+                className="flex items-start gap-3 text-base text-gray-700 py-2 border-b border-gray-100 last:border-0"
               >
                 <span className="mt-1 w-2 h-2 rounded-full bg-blue-500 shrink-0" />
                 <div>
                   <p>{note.message}</p>
-                  <p className="text-xs text-gray-400 mt-0.5">
+                  <p className="text-sm text-gray-400 mt-0.5">
                     {new Date(note.createdAt).toLocaleString('en-PH')}
                   </p>
                 </div>
@@ -83,9 +83,12 @@ function StatCard({ label, value, color = 'blue' }) {
     purple: 'border-t-purple-500',
   }
   return (
-    <div className={`bg-white rounded-xl border border-gray-200 border-t-4 ${accent[color]} p-5`}>
-      <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide">{label}</p>
-      <p className="text-4xl font-bold text-gray-900 mt-2">{value}</p>
+    <div
+      className={`rounded-xl border-t-4 ${accent[color]} p-5`}
+      style={{ background: '#e8e8e8', boxShadow: '8px 8px 20px #d1d1d1, -8px -8px 20px #ffffff' }}
+    >
+      <p className="text-sm font-semibold text-gray-400 uppercase tracking-wide">{label}</p>
+      <p className="text-5xl font-bold text-gray-900 mt-2">{value}</p>
     </div>
   )
 }

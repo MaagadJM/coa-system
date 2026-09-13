@@ -40,11 +40,11 @@ export function ProjectDetailPage() {
           <div>
             <button
               onClick={() => navigate(-1)}
-              className="text-sm text-blue-700 hover:text-blue-900 mb-2 block"
+              className="text-base text-blue-700 hover:text-blue-900 mb-2 block"
             >
               &larr; Back
             </button>
-            <h2 className="text-2xl font-bold text-gray-800">{project.projectName}</h2>
+            <h2 className="text-3xl font-bold text-gray-800">{project.projectName}</h2>
             <div className="mt-2">
               <ProjectStatusBadge status={project.status} />
             </div>
@@ -52,7 +52,7 @@ export function ProjectDetailPage() {
           {canEdit && (
             <button
               onClick={() => navigate(`/projects/${id}/edit`)}
-              className="px-4 py-2 text-sm font-medium text-blue-800 border border-blue-300 rounded-lg hover:bg-blue-50 transition-colors"
+              className="px-4 py-2 text-base font-medium text-blue-800 border border-blue-300 rounded-lg hover:bg-blue-50 transition-colors"
             >
               Edit Project
             </button>
@@ -103,7 +103,7 @@ function DetailCard({ title, children }) {
   return (
     <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
       <div className="px-5 py-3.5 bg-gray-50 border-b border-gray-200">
-        <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide">{title}</h3>
+        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide">{title}</h3>
       </div>
       <div className="divide-y divide-gray-100">{children}</div>
     </div>
@@ -113,8 +113,8 @@ function DetailCard({ title, children }) {
 function DetailRow({ label, value }) {
   return (
     <div className="flex px-5 py-3.5 gap-4">
-      <span className="text-sm text-gray-500 w-48 shrink-0">{label}</span>
-      <span className="text-sm text-gray-800 font-medium">{value ?? '—'}</span>
+      <span className="text-base text-gray-500 w-48 shrink-0">{label}</span>
+      <span className="text-base text-gray-800 font-medium">{value ?? '—'}</span>
     </div>
   )
 }

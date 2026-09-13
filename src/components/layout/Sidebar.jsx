@@ -26,7 +26,7 @@ const NAV_ITEMS = {
   ],
 }
 
-export function Sidebar() {
+export function Sidebar({ open, onClose }) {
   const { user, logout } = useAuth()
   const { unreadCount } = useProjects()
   const navigate = useNavigate()
@@ -43,21 +43,30 @@ export function Sidebar() {
 
   return (
     <>
+    {/* Mobile backdrop */}
+    {open && (
+      <div
+        className="fixed inset-0 z-30 bg-black/50 lg:hidden"
+        onClick={onClose}
+      />
+    )}
+
+    {/* Logout confirmation modal */}
     {confirmingLogout && (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
         <div className="bg-white rounded-2xl shadow-xl w-full max-w-sm mx-4 p-6">
-          <h3 className="text-base font-semibold text-gray-800 mb-1">Sign out</h3>
-          <p className="text-sm text-gray-500 mb-6">Are you sure you want to sign out of CAP-In?</p>
+          <h3 className="text-xl font-semibold text-gray-800 mb-1">Sign out</h3>
+          <p className="text-base text-gray-500 mb-6">Are you sure you want to sign out of CAP-In?</p>
           <div className="flex gap-3">
             <button
               onClick={() => setConfirmingLogout(false)}
-              className="flex-1 px-4 py-2.5 rounded-lg text-sm font-medium border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors"
+              className="flex-1 px-4 py-2.5 rounded-lg text-base font-medium border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors"
             >
               Cancel
             </button>
             <button
               onClick={handleLogout}
-              className="neu-btn-primary flex-1 px-4 py-2.5 rounded-lg text-sm font-medium text-white"
+              className="neu-btn-primary flex-1 px-4 py-2.5 rounded-lg text-base font-medium text-white"
               style={{ background: 'linear-gradient(145deg, #b91c1c, #ef4444)' }}
             >
               Yes, sign out
@@ -66,11 +75,29 @@ export function Sidebar() {
         </div>
       </div>
     )}
-    <aside className="w-64 h-screen sticky top-0 bg-blue-900 text-white flex flex-col overflow-y-auto">
-      <div className="px-6 py-5 border-b border-blue-800">
-        <p className="text-xs uppercase tracking-widest text-blue-300 mb-1">Republic of the Philippines</p>
-        <h1 className="text-lg font-bold leading-tight">CAP-In</h1>
-        <p className="text-xs text-blue-300 mt-0.5">Commission on Audit</p>
+
+    <aside className={`
+      fixed inset-y-0 left-0 z-40 w-64 h-screen bg-blue-900 text-white flex flex-col overflow-y-auto
+      transform transition-transform duration-300 ease-in-out
+      lg:relative lg:translate-x-0 lg:z-auto
+      ${open ? 'translate-x-0' : '-translate-x-full'}
+    `}>
+      <div className="px-4 py-5 border-b border-blue-800 flex items-start gap-3">
+        {/* Close button — mobile only, left side to match hamburger position */}
+        <button
+          onClick={onClose}
+          className="sidebar-nav-item lg:hidden mt-0.5 p-2 rounded-lg text-blue-300 hover:text-white shrink-0"
+          aria-label="Close menu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <div>
+          <p className="text-sm uppercase tracking-widest text-blue-300 mb-1">Republic of the Philippines</p>
+          <h1 className="text-xl font-bold leading-tight">CAP-In</h1>
+          <p className="text-sm text-blue-300 mt-0.5">Commission on Audit</p>
+        </div>
       </div>
 
       <nav className="flex-1 px-4 py-6 space-y-1">
@@ -79,17 +106,18 @@ export function Sidebar() {
             key={item.to}
             to={item.to}
             end={item.end}
+            onClick={onClose}
             className={({ isActive }) =>
-              `flex items-center justify-between px-3 py-2.5 rounded-lg text-sm transition-colors ${
+              `flex items-center justify-between px-3 py-2.5 rounded-lg text-base uppercase tracking-wide ${
                 isActive
-                  ? 'bg-blue-700 text-white font-medium'
-                  : 'text-blue-200 hover:bg-blue-800 hover:text-white'
+                  ? 'sidebar-nav-active text-white font-medium'
+                  : 'sidebar-nav-item text-blue-200 hover:text-white'
               }`
             }
           >
             <span>{item.label}</span>
             {item.badge && badgeCount > 0 && (
-              <span className="bg-red-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full min-w-5 text-center">
+              <span className="bg-red-500 text-white text-sm font-bold px-1.5 py-0.5 rounded-full min-w-5 text-center">
                 {badgeCount}
               </span>
             )}
@@ -99,15 +127,15 @@ export function Sidebar() {
 
       <div className="px-4 py-4 border-t border-blue-800">
         <div className="mb-3 px-3">
-          <p className="text-sm font-medium text-white truncate">{user?.name}</p>
-          <p className="text-xs text-blue-300 truncate">{ROLE_LABELS[user?.role]}</p>
+          <p className="text-base font-medium text-white truncate">{user?.name}</p>
+          <p className="text-sm font-medium text-blue-300 truncate">{ROLE_LABELS[user?.role]}</p>
           {user?.agency && (
-            <p className="text-xs text-blue-400 truncate mt-0.5">{user.agency}</p>
+            <p className="text-sm text-blue-500 mt-0.5">{user.agency}</p>
           )}
         </div>
         <button
           onClick={() => setConfirmingLogout(true)}
-          className="w-full text-left px-3 py-2 rounded-lg text-sm text-blue-200 bg-white/10 hover:bg-white/20 hover:text-white transition-colors"
+          className="sidebar-nav-item w-full text-center px-3 py-2 rounded-lg font-medium text-base uppercase tracking-wide text-blue-200 hover:text-white"
         >
           Sign Out
         </button>

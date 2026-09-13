@@ -39,21 +39,21 @@ export function LoginPage() {
       {/* Left — Hero */}
       <div className="hidden lg:flex flex-col justify-between w-1/2 bg-blue-900 text-white px-16 py-12">
         <div>
-          <p className="text-xs uppercase tracking-widest text-blue-300 mb-1">Republic of the Philippines</p>
-          <p className="text-sm font-semibold text-white">Commission on Audit</p>
+          <p className="text-sm uppercase tracking-widest text-blue-300 mb-1">Republic of the Philippines</p>
+          <p className="text-base font-semibold text-white">Commission on Audit</p>
         </div>
 
         <div>
-          <h1 className="text-5xl font-bold leading-tight mb-4">
+          <h1 className="text-6xl font-bold leading-tight mb-4">
             One place for<br />COA audit apps.
           </h1>
-          <p className="text-blue-200 text-base leading-relaxed max-w-sm">
+          <p className="text-blue-200 text-xl leading-relaxed max-w-sm">
             CAP-In helps ensure that government infrastructure spending meets
             public needs — efficiently and transparently.
           </p>
         </div>
 
-        <p className="text-xs text-blue-400">
+        <p className="text-sm text-blue-400">
           Collaborative Audit Platform for Infrastructure &mdash; CAP-In &copy; {new Date().getFullYear()}
         </p>
       </div>
@@ -66,9 +66,9 @@ export function LoginPage() {
         <div className="w-full max-w-sm mx-auto">
           {/* Mobile-only branding */}
           <div className="lg:hidden text-center mb-8">
-            <p className="text-xs uppercase tracking-widest mb-1" style={{ color: '#94a3b8' }}>Republic of the Philippines</p>
-            <h1 className="text-2xl font-bold" style={{ color: '#1e3a8a' }}>CAP-In</h1>
-            <p className="text-sm mt-1" style={{ color: '#64748b' }}>Commission on Audit</p>
+            <p className="text-sm uppercase tracking-widest mb-1" style={{ color: '#94a3b8' }}>Republic of the Philippines</p>
+            <h1 className="text-3xl font-bold" style={{ color: '#1e3a8a' }}>CAP-In</h1>
+            <p className="text-base mt-1" style={{ color: '#64748b' }}>Commission on Audit</p>
           </div>
 
           {/* Card */}
@@ -79,12 +79,12 @@ export function LoginPage() {
               boxShadow: '20px 20px 60px #bebebe, -20px -20px 60px #ffffff',
             }}
           >
-            <h2 className="text-2xl font-bold mb-1" style={{ color: '#1e293b' }}>Sign in</h2>
-            <p className="text-sm mb-8" style={{ color: '#64748b' }}>Access your CAP-In account</p>
+            <h2 className="text-3xl font-bold mb-1" style={{ color: '#1e293b' }}>Sign in</h2>
+            <p className="text-base mb-8" style={{ color: '#64748b' }}>Access your CAP-In account</p>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: '#475569' }}>
+                <label className="block text-sm font-semibold uppercase tracking-wide mb-2" style={{ color: '#475569' }}>
                   Email Address
                 </label>
                 <input
@@ -94,7 +94,7 @@ export function LoginPage() {
                   required
                   autoComplete="email"
                   placeholder="you@example.gov"
-                  className="w-full px-4 py-3 text-sm rounded-xl outline-none transition"
+                  className="w-full px-4 py-3 text-base rounded-xl outline-none transition"
                   style={{
                     background: '#e0e0e0',
                     boxShadow: 'inset 6px 6px 12px #bebebe, inset -6px -6px 12px #ffffff',
@@ -105,7 +105,7 @@ export function LoginPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: '#475569' }}>
+                <label className="block text-sm font-semibold uppercase tracking-wide mb-2" style={{ color: '#475569' }}>
                   Password
                 </label>
                 <div className="relative">
@@ -116,7 +116,7 @@ export function LoginPage() {
                     required
                     autoComplete="current-password"
                     placeholder="••••••••"
-                    className="w-full px-4 py-3 pr-11 text-sm rounded-xl outline-none transition"
+                    className="w-full px-4 py-3 pr-11 text-base rounded-xl outline-none transition"
                     style={{
                       background: '#e0e0e0',
                       boxShadow: 'inset 6px 6px 12px #bebebe, inset -6px -6px 12px #ffffff',
@@ -144,7 +144,7 @@ export function LoginPage() {
               </div>
 
               {error && (
-                <p className="text-sm text-red-600 rounded-xl px-4 py-3" style={{ background: '#fee2e2' }}>
+                <p className="text-base text-red-600 rounded-xl px-4 py-3" style={{ background: '#fee2e2' }}>
                   {error}
                 </p>
               )}
@@ -152,7 +152,7 @@ export function LoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="neu-btn-primary w-full text-white font-semibold py-3 rounded-xl text-sm disabled:opacity-60"
+                className="neu-btn-primary w-full text-white font-semibold py-3 rounded-xl text-base disabled:opacity-60"
                 style={{
                   background: 'linear-gradient(145deg, #1e3a8a, #2563eb)',
                   boxShadow: '6px 6px 16px #bebebe, -6px -6px 16px #ffffff',

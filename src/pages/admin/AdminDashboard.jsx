@@ -10,9 +10,9 @@ export function AdminDashboard() {
   return (
     <DashboardLayout>
       <div className="mb-8 rounded-2xl bg-linear-to-br from-blue-900 to-blue-700 px-8 py-6 text-white">
-        <p className="text-sm text-blue-300 mb-1">System Administrator</p>
-        <h2 className="text-2xl font-bold">{greeting}, {firstName}!</h2>
-        <p className="text-sm text-blue-200 mt-1">Manage agencies, users, and system configuration.</p>
+        <p className="text-base text-blue-300 mb-1">System Administrator</p>
+        <h2 className="text-3xl font-bold">{greeting}, {firstName}!</h2>
+        <p className="text-base text-blue-200 mt-1">Manage agencies, users, and system configuration.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -21,8 +21,8 @@ export function AdminDashboard() {
         <StatCard label="Active Projects" value="—" color="green" />
       </div>
 
-      <div className="mt-8 bg-white rounded-xl border border-gray-200 p-6">
-        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">Quick Actions</h3>
+      <div className="mt-8 rounded-xl p-6" style={{ background: '#e8e8e8', boxShadow: '8px 8px 20px #d1d1d1, -8px -8px 20px #ffffff' }}>
+        <h3 className="text-base font-semibold text-gray-500 uppercase tracking-wide mb-4">Quick Actions</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <ActionItem label="Create Agency" description="Register a new government agency" />
           <ActionItem label="Manage Users" description="Assign roles and credentials" />
@@ -41,18 +41,24 @@ function StatCard({ label, value, color = 'blue' }) {
     purple: 'border-t-purple-500',
   }
   return (
-    <div className={`bg-white rounded-xl border border-gray-200 border-t-4 ${accent[color]} p-5`}>
-      <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide">{label}</p>
-      <p className="text-4xl font-bold text-gray-900 mt-2">{value}</p>
+    <div
+      className={`rounded-xl border-t-4 ${accent[color]} p-5`}
+      style={{ background: '#e8e8e8', boxShadow: '8px 8px 20px #d1d1d1, -8px -8px 20px #ffffff' }}
+    >
+      <p className="text-sm font-semibold text-gray-400 uppercase tracking-wide">{label}</p>
+      <p className="text-5xl font-bold text-gray-900 mt-2">{value}</p>
     </div>
   )
 }
 
 function ActionItem({ label, description }) {
   return (
-    <button className="text-left px-4 py-4 rounded-xl border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-colors">
-      <p className="text-sm font-semibold text-gray-800">{label}</p>
-      <p className="text-xs text-gray-400 mt-0.5">{description}</p>
+    <button
+      className="neu-btn text-left px-4 py-4 rounded-xl"
+      style={{ background: '#e8e8e8', boxShadow: '5px 5px 12px #d1d1d1, -5px -5px 12px #ffffff' }}
+    >
+      <p className="text-base font-semibold text-gray-800">{label}</p>
+      <p className="text-sm text-gray-400 mt-0.5">{description}</p>
     </button>
   )
 }

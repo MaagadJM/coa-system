@@ -138,9 +138,9 @@ export function ProjectForm({ defaultValues = {}, onSubmit, onCancel, loading })
         <button
           type="button"
           onClick={onCancel}
-          className="neu-btn px-5 py-2.5 text-sm font-medium rounded-xl"
+          className="neu-btn px-5 py-2.5 text-base font-medium rounded-xl"
           style={{
-            background: '#f0f0f0',
+            background: '#e8e8e8',
             boxShadow: '5px 5px 12px #d1d1d1, -5px -5px 12px #ffffff',
             color: '#475569',
           }}
@@ -150,7 +150,7 @@ export function ProjectForm({ defaultValues = {}, onSubmit, onCancel, loading })
         <button
           type="submit"
           disabled={loading}
-          className="neu-btn-primary px-5 py-2.5 text-sm font-semibold text-white rounded-xl disabled:opacity-60"
+          className="neu-btn-primary px-5 py-2.5 text-base font-semibold text-white rounded-xl disabled:opacity-60"
           style={{
             background: 'linear-gradient(145deg, #1e3a8a, #2563eb)',
             boxShadow: '5px 5px 12px #d1d1d1, -5px -5px 12px #ffffff',
@@ -167,9 +167,9 @@ function Section({ title, children }) {
   return (
     <div
       className="rounded-2xl p-5 space-y-4"
-      style={{ background: '#f0f0f0', boxShadow: '8px 8px 20px #d1d1d1, -8px -8px 20px #ffffff' }}
+      style={{ background: '#e8e8e8', boxShadow: '8px 8px 20px #d1d1d1, -8px -8px 20px #ffffff' }}
     >
-      <h3 className="text-xs font-semibold uppercase tracking-wide" style={{ color: '#64748b' }}>{title}</h3>
+      <h3 className="text-sm font-semibold uppercase tracking-wide" style={{ color: '#64748b' }}>{title}</h3>
       {children}
     </div>
   )
@@ -178,7 +178,7 @@ function Section({ title, children }) {
 function Field({ label, required, children }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-xs font-semibold uppercase tracking-wide" style={{ color: '#475569' }}>
+      <label className="text-sm font-semibold uppercase tracking-wide" style={{ color: '#475569' }}>
         {label} {required && <span className="text-red-400">*</span>}
       </label>
       {children}
@@ -187,10 +187,10 @@ function Field({ label, required, children }) {
 }
 
 const neuInputStyle = {
-  background: '#f0f0f0',
+  background: '#e8e8e8',
   boxShadow: 'inset 5px 5px 10px #d1d1d1, inset -5px -5px 10px #ffffff',
   border: 'none',
   color: '#1e293b',
 }
 
-const inputClass = 'w-full px-3.5 py-2.5 text-sm rounded-xl outline-none transition'
+const inputClass = 'w-full px-3.5 py-2.5 text-base rounded-xl outline-none transition'

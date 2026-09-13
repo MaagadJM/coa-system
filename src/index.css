@@ -30,3 +30,38 @@ button, [role="button"] {
   filter: brightness(0.95);
   transform: translateY(0);
 }
+
+/* Neumorphic icon button (light background) */
+.neu-icon-btn {
+  background: #e8e8e8;
+  box-shadow: 5px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+.neu-icon-btn:hover {
+  box-shadow: 7px 7px 14px #d1d1d1, -7px -7px 14px #ffffff;
+  transform: translateY(-1px);
+}
+.neu-icon-btn:active {
+  box-shadow: inset 4px 4px 8px #d1d1d1, inset -4px -4px 8px #ffffff;
+  transform: translateY(0);
+}
+
+/* Sidebar nav neumorphism (dark blue base: #1e3a8a) */
+.sidebar-nav-item,
+.sidebar-nav-active {
+  transition: box-shadow 0.3s ease, transform 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+.sidebar-nav-item {
+  box-shadow: 3px 3px 8px #162c70, -3px -3px 8px #2648a4;
+}
+.sidebar-nav-item:hover {
+  box-shadow: 5px 5px 14px #162c70, -5px -5px 14px #2648a4;
+  transform: translateY(-1px);
+}
+.sidebar-nav-item:active {
+  box-shadow: inset 3px 3px 8px #162c70, inset -3px -3px 8px #2648a4;
+  transform: translateY(0);
+}
+.sidebar-nav-active {
+  box-shadow: inset 4px 4px 10px #162c70, inset -4px -4px 10px #2648a4;
+}
