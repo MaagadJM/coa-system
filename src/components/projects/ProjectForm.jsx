@@ -17,7 +17,7 @@ export function ProjectForm({ defaultValues = {}, onSubmit, onCancel, loading })
             defaultValue={defaultValues.projectName}
             required
             placeholder="e.g. Construction of 25-storey Building"
-            className={inputClass} style={neuInputStyle}
+            className={inputClass}
           />
         </Field>
 
@@ -28,7 +28,7 @@ export function ProjectForm({ defaultValues = {}, onSubmit, onCancel, loading })
             required
             rows={3}
             placeholder="Brief description of the project..."
-            className={inputClass} style={neuInputStyle}
+            className={inputClass}
           />
         </Field>
 
@@ -39,7 +39,7 @@ export function ProjectForm({ defaultValues = {}, onSubmit, onCancel, loading })
               defaultValue={defaultValues.implementingAgency}
               required
               placeholder="e.g. Department of Public Works and Highways"
-              className={inputClass} style={neuInputStyle}
+              className={inputClass}
             />
           </Field>
 
@@ -49,7 +49,7 @@ export function ProjectForm({ defaultValues = {}, onSubmit, onCancel, loading })
               defaultValue={defaultValues.contractor}
               required
               placeholder="e.g. ABC Builders Corporation"
-              className={inputClass} style={neuInputStyle}
+              className={inputClass}
             />
           </Field>
         </div>
@@ -60,7 +60,7 @@ export function ProjectForm({ defaultValues = {}, onSubmit, onCancel, loading })
             defaultValue={defaultValues.location}
             required
             placeholder="e.g. Metro Manila"
-            className={inputClass} style={neuInputStyle}
+            className={inputClass}
           />
         </Field>
       </Section>
@@ -72,7 +72,7 @@ export function ProjectForm({ defaultValues = {}, onSubmit, onCancel, loading })
               name="procurementMode"
               defaultValue={defaultValues.procurementMode ?? ''}
               required
-              className={inputClass} style={neuInputStyle}
+              className={inputClass}
             >
               <option value="" disabled>Select mode...</option>
               {PROCUREMENT_MODES.map((m) => (
@@ -86,7 +86,7 @@ export function ProjectForm({ defaultValues = {}, onSubmit, onCancel, loading })
               name="fundingSource"
               defaultValue={defaultValues.fundingSource ?? ''}
               required
-              className={inputClass} style={neuInputStyle}
+              className={inputClass}
             >
               <option value="" disabled>Select source...</option>
               {FUNDING_SOURCES.map((f) => (
@@ -105,7 +105,7 @@ export function ProjectForm({ defaultValues = {}, onSubmit, onCancel, loading })
             min={0}
             step="0.01"
             placeholder="e.g. 25000000"
-            className={inputClass} style={neuInputStyle}
+            className={inputClass}
           />
         </Field>
       </Section>
@@ -118,7 +118,7 @@ export function ProjectForm({ defaultValues = {}, onSubmit, onCancel, loading })
               type="date"
               defaultValue={defaultValues.startDate}
               required
-              className={inputClass} style={neuInputStyle}
+              className={inputClass}
             />
           </Field>
 
@@ -128,7 +128,7 @@ export function ProjectForm({ defaultValues = {}, onSubmit, onCancel, loading })
               type="date"
               defaultValue={defaultValues.completionDate}
               required
-              className={inputClass} style={neuInputStyle}
+              className={inputClass}
             />
           </Field>
         </div>
@@ -138,23 +138,15 @@ export function ProjectForm({ defaultValues = {}, onSubmit, onCancel, loading })
         <button
           type="button"
           onClick={onCancel}
-          className="neu-btn px-5 py-2.5 text-base font-medium rounded-xl"
-          style={{
-            background: '#e8e8e8',
-            boxShadow: '5px 5px 12px #d1d1d1, -5px -5px 12px #ffffff',
-            color: '#475569',
-          }}
+          className="px-5 py-2.5 text-base font-medium rounded-xl border border-gray-300 bg-[#f9fcff] text-slate-600 hover:bg-gray-50 transition-colors"
         >
           Cancel
         </button>
         <button
           type="submit"
           disabled={loading}
-          className="neu-btn-primary px-5 py-2.5 text-base font-semibold text-white rounded-xl disabled:opacity-60"
-          style={{
-            background: 'linear-gradient(145deg, #1e3a8a, #2563eb)',
-            boxShadow: '5px 5px 12px #d1d1d1, -5px -5px 12px #ffffff',
-          }}
+          className="px-5 py-2.5 text-base font-semibold text-white rounded-xl disabled:opacity-60 hover:opacity-90 transition-opacity"
+          style={{ background: 'linear-gradient(145deg, #1e3a8a, #2563eb)' }}
         >
           {loading ? 'Saving...' : 'Save Project'}
         </button>
@@ -165,11 +157,8 @@ export function ProjectForm({ defaultValues = {}, onSubmit, onCancel, loading })
 
 function Section({ title, children }) {
   return (
-    <div
-      className="rounded-2xl p-5 space-y-4"
-      style={{ background: '#e8e8e8', boxShadow: '8px 8px 20px #d1d1d1, -8px -8px 20px #ffffff' }}
-    >
-      <h3 className="text-sm font-semibold uppercase tracking-wide" style={{ color: '#64748b' }}>{title}</h3>
+    <div className="rounded-2xl p-5 space-y-4 bg-[#f9fcff] border border-gray-200">
+      <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">{title}</h3>
       {children}
     </div>
   )
@@ -178,7 +167,7 @@ function Section({ title, children }) {
 function Field({ label, required, children }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-sm font-semibold uppercase tracking-wide" style={{ color: '#475569' }}>
+      <label className="text-sm font-semibold uppercase tracking-wide text-slate-600">
         {label} {required && <span className="text-red-400">*</span>}
       </label>
       {children}
@@ -186,11 +175,4 @@ function Field({ label, required, children }) {
   )
 }
 
-const neuInputStyle = {
-  background: '#e8e8e8',
-  boxShadow: 'inset 5px 5px 10px #d1d1d1, inset -5px -5px 10px #ffffff',
-  border: 'none',
-  color: '#1e293b',
-}
-
-const inputClass = 'w-full px-3.5 py-2.5 text-base rounded-xl outline-none transition'
+const inputClass = 'w-full px-3.5 py-2.5 text-base rounded-xl outline-none transition border border-gray-300 bg-[#f9fcff] text-slate-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20'

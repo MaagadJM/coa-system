@@ -58,33 +58,24 @@ export function LoginPage() {
         </p>
       </div>
 
-      {/* Right — Neumorphic Login Form */}
-      <div
-        className="flex flex-col justify-center w-full lg:w-1/2 px-8 py-12"
-        style={{ background: '#e0e0e0' }}
-      >
+      {/* Right — Login Form */}
+      <div className="flex flex-col justify-center w-full lg:w-1/2 px-8 py-12" style={{ background: '#f9fcff' }}>
         <div className="w-full max-w-sm mx-auto">
           {/* Mobile-only branding */}
           <div className="lg:hidden text-center mb-8">
-            <p className="text-sm uppercase tracking-widest mb-1" style={{ color: '#94a3b8' }}>Republic of the Philippines</p>
-            <h1 className="text-3xl font-bold" style={{ color: '#1e3a8a' }}>CAP-In</h1>
-            <p className="text-base mt-1" style={{ color: '#64748b' }}>Commission on Audit</p>
+            <p className="text-sm uppercase tracking-widest text-slate-400 mb-1">Republic of the Philippines</p>
+            <h1 className="text-3xl font-bold text-blue-900">CAP-In</h1>
+            <p className="text-base mt-1 text-slate-500">Commission on Audit</p>
           </div>
 
           {/* Card */}
-          <div
-            className="p-8 rounded-3xl"
-            style={{
-              background: '#e0e0e0',
-              boxShadow: '20px 20px 60px #bebebe, -20px -20px 60px #ffffff',
-            }}
-          >
-            <h2 className="text-3xl font-bold mb-1" style={{ color: '#1e293b' }}>Sign in</h2>
-            <p className="text-base mb-8" style={{ color: '#64748b' }}>Access your CAP-In account</p>
+          <div className="p-8 rounded-2xl border border-gray-200 shadow-lg" style={{ background: '#f9fcff' }}>
+            <h2 className="text-3xl font-bold mb-1 text-slate-800">Sign in</h2>
+            <p className="text-base mb-8 text-slate-500">Access your CAP-In account</p>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label className="block text-sm font-semibold uppercase tracking-wide mb-2" style={{ color: '#475569' }}>
+                <label className="block text-sm font-semibold uppercase tracking-wide mb-2 text-slate-600">
                   Email Address
                 </label>
                 <input
@@ -94,18 +85,12 @@ export function LoginPage() {
                   required
                   autoComplete="email"
                   placeholder="you@example.gov"
-                  className="w-full px-4 py-3 text-base rounded-xl outline-none transition"
-                  style={{
-                    background: '#e0e0e0',
-                    boxShadow: 'inset 6px 6px 12px #bebebe, inset -6px -6px 12px #ffffff',
-                    border: 'none',
-                    color: '#1e293b',
-                  }}
+                  className="w-full px-4 py-3 text-base rounded-xl outline-none transition border border-gray-300 bg-[#f9fcff] text-slate-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold uppercase tracking-wide mb-2" style={{ color: '#475569' }}>
+                <label className="block text-sm font-semibold uppercase tracking-wide mb-2 text-slate-600">
                   Password
                 </label>
                 <div className="relative">
@@ -116,13 +101,7 @@ export function LoginPage() {
                     required
                     autoComplete="current-password"
                     placeholder="••••••••"
-                    className="w-full px-4 py-3 pr-11 text-base rounded-xl outline-none transition"
-                    style={{
-                      background: '#e0e0e0',
-                      boxShadow: 'inset 6px 6px 12px #bebebe, inset -6px -6px 12px #ffffff',
-                      border: 'none',
-                      color: '#1e293b',
-                    }}
+                    className="w-full px-4 py-3 pr-11 text-base rounded-xl outline-none transition border border-gray-300 bg-[#f9fcff] text-slate-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
                   />
                   <button
                     type="button"
@@ -144,7 +123,7 @@ export function LoginPage() {
               </div>
 
               {error && (
-                <p className="text-base text-red-600 rounded-xl px-4 py-3" style={{ background: '#fee2e2' }}>
+                <p className="text-base text-red-600 rounded-xl px-4 py-3 bg-red-50">
                   {error}
                 </p>
               )}
@@ -152,11 +131,8 @@ export function LoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="neu-btn-primary w-full text-white font-semibold py-3 rounded-xl text-base disabled:opacity-60"
-                style={{
-                  background: 'linear-gradient(145deg, #1e3a8a, #2563eb)',
-                  boxShadow: '6px 6px 16px #bebebe, -6px -6px 16px #ffffff',
-                }}
+                className="w-full text-white font-semibold py-3 rounded-xl text-base disabled:opacity-60 hover:opacity-90 transition-opacity"
+                style={{ background: 'linear-gradient(145deg, #1e3a8a, #2563eb)' }}
               >
                 {loading ? 'Signing in...' : 'Sign In'}
               </button>

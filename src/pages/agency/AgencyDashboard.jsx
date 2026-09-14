@@ -31,7 +31,7 @@ export function AgencyDashboard() {
         <StatCard label="Completed" value={completed} color="green" />
       </div>
 
-      <div className="mt-8 rounded-xl p-6" style={{ background: '#e8e8e8', boxShadow: '8px 8px 20px #d1d1d1, -8px -8px 20px #ffffff' }}>
+      <div className="mt-8 rounded-xl p-6" style={{ background: '#f9fcff', boxShadow: '8px 8px 20px #d1d1d1, -8px -8px 20px #ffffff' }}>
         <h3 className="text-base font-semibold text-gray-500 uppercase tracking-wide mb-4">Quick Actions</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <ActionItem
@@ -61,7 +61,7 @@ function StatCard({ label, value, color = 'blue' }) {
   return (
     <div
       className={`rounded-xl border-t-4 ${accent[color]} p-5`}
-      style={{ background: '#e8e8e8', boxShadow: '8px 8px 20px #d1d1d1, -8px -8px 20px #ffffff' }}
+      style={{ background: '#f9fcff', boxShadow: '8px 8px 20px #d1d1d1, -8px -8px 20px #ffffff' }}
     >
       <p className="text-sm font-semibold text-gray-400 uppercase tracking-wide">{label}</p>
       <p className="text-5xl font-bold text-gray-900 mt-2">{value}</p>
@@ -73,8 +73,7 @@ function ActionItem({ label, description, onClick }) {
   return (
     <button
       onClick={onClick}
-      className="neu-btn text-left px-4 py-4 rounded-xl"
-      style={{ background: '#e8e8e8', boxShadow: '5px 5px 12px #d1d1d1, -5px -5px 12px #ffffff' }}
+      className="text-left px-4 py-4 rounded-xl bg-[#f9fcff] border border-gray-200 hover:bg-blue-50 transition-colors"
     >
       <p className="text-base font-semibold text-gray-800">{label}</p>
       <p className="text-sm text-gray-400 mt-0.5">{description}</p>

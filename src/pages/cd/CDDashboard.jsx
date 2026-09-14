@@ -22,7 +22,7 @@ export function CDDashboard() {
         <StatCard label="Endorsed to FAO" value="—" color="purple" />
       </div>
 
-      <div className="mt-8 rounded-xl p-6" style={{ background: '#e8e8e8', boxShadow: '8px 8px 20px #d1d1d1, -8px -8px 20px #ffffff' }}>
+      <div className="mt-8 rounded-xl p-6" style={{ background: '#f9fcff', boxShadow: '8px 8px 20px #d1d1d1, -8px -8px 20px #ffffff' }}>
         <h3 className="text-base font-semibold text-gray-500 uppercase tracking-wide mb-3">All Complaints Overview</h3>
         <p className="text-base text-gray-400">No complaints to display.</p>
       </div>
@@ -41,7 +41,7 @@ function StatCard({ label, value, color = 'blue' }) {
   return (
     <div
       className={`rounded-xl border-t-4 ${accent[color]} p-5`}
-      style={{ background: '#e8e8e8', boxShadow: '8px 8px 20px #d1d1d1, -8px -8px 20px #ffffff' }}
+      style={{ background: '#f9fcff', boxShadow: '8px 8px 20px #d1d1d1, -8px -8px 20px #ffffff' }}
     >
       <p className="text-sm font-semibold text-gray-400 uppercase tracking-wide">{label}</p>
       <p className="text-5xl font-bold text-gray-900 mt-2">{value}</p>

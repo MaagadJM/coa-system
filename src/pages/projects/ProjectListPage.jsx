@@ -41,7 +41,7 @@ export function ProjectListPage() {
       {/* Register Project Modal */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
-          <div className="w-full max-w-2xl max-h-[90vh] flex flex-col rounded-2xl" style={{ background: '#e8e8e8' }}>
+          <div className="w-full max-w-2xl max-h-[90vh] flex flex-col rounded-2xl" style={{ background: '#f9fcff' }}>
             {/* Sticky header */}
             <div className="px-8 py-5 border-b border-[#d1d1d1] shrink-0">
               <h3 className="text-2xl font-bold text-gray-800">Register New Project</h3>
@@ -81,8 +81,8 @@ export function ProjectListPage() {
       </div>
 
       {visibleProjects.length === 0 ? (
-        <div className="rounded-xl flex flex-col items-center justify-center py-24 text-center" style={{ background: '#e8e8e8', boxShadow: '8px 8px 20px #d1d1d1, -8px -8px 20px #ffffff' }}>
-          <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4" style={{ background: '#e8e8e8', boxShadow: 'inset 4px 4px 8px #d1d1d1, inset -4px -4px 8px #ffffff' }}>
+        <div className="rounded-xl flex flex-col items-center justify-center py-24 text-center" style={{ background: '#f9fcff', boxShadow: '8px 8px 20px #d1d1d1, -8px -8px 20px #ffffff' }}>
+          <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4" style={{ background: '#f9fcff', boxShadow: 'inset 4px 4px 8px #d1d1d1, inset -4px -4px 8px #ffffff' }}>
             <svg className="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
             </svg>
@@ -103,7 +103,7 @@ export function ProjectListPage() {
           )}
         </div>
       ) : (
-        <div className="rounded-xl overflow-hidden" style={{ background: '#e8e8e8', boxShadow: '8px 8px 20px #d1d1d1, -8px -8px 20px #ffffff' }}>
+        <div className="rounded-xl overflow-hidden" style={{ background: '#f9fcff', boxShadow: '8px 8px 20px #d1d1d1, -8px -8px 20px #ffffff' }}>
           <table className="w-full text-base">
             <thead className="border-b border-[#d1d1d1]" style={{ background: '#dedede' }}>
               <tr>

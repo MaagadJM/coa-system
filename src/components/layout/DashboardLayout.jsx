@@ -14,10 +14,10 @@ export function DashboardLayout({ children }) {
     .toUpperCase() ?? '?'
 
   return (
-    <div className="flex min-h-screen" style={{ background: '#e8e8e8' }}>
+    <div className="flex min-h-screen" style={{ background: '#f9fcff' }}>
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <div className="flex-1 flex flex-col min-w-0">
-        <header className="sticky top-0 z-10 backdrop-blur-sm border-b border-gray-300 px-4 lg:px-8 h-14 flex items-center justify-between lg:justify-end gap-3" style={{ background: 'rgba(232,232,232,0.85)' }}>
+        <header className="sticky top-0 z-10 backdrop-blur-sm border-b border-gray-300 px-4 lg:px-8 h-14 flex items-center justify-between lg:justify-end gap-3" style={{ background: 'rgba(249,252,255,0.85)' }}>
           {/* Hamburger — mobile only */}
           <button
             onClick={() => setSidebarOpen(true)}
