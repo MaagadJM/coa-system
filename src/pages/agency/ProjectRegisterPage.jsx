@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { DashboardLayout } from '../../components/layout/DashboardLayout'
 import { ProjectForm } from '../../components/projects/ProjectForm'
 import { useAuth } from '../../hooks/useAuth'
@@ -21,6 +21,20 @@ export function ProjectRegisterPage() {
   return (
     <DashboardLayout>
       <div className="max-w-3xl mx-auto">
+        {/* Breadcrumb */}
+        <nav className="flex items-center gap-2 text-sm mb-6">
+          <Link
+            to={ROUTES.PROJECTS}
+            className="text-blue-600 hover:text-blue-800 font-medium transition-colors"
+          >
+            Infrastructure Projects
+          </Link>
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-gray-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+          <span className="text-gray-500">Register New Project</span>
+        </nav>
+
         <div className="mb-6">
           <h2 className="text-3xl font-bold text-gray-800">Register New Project</h2>
           <p className="text-base text-gray-500 mt-1">
@@ -28,16 +42,11 @@ export function ProjectRegisterPage() {
           </p>
         </div>
 
-        <div
-          className="rounded-3xl p-8"
-          style={{ background: '#f0f0f0', boxShadow: '20px 20px 60px #d1d1d1, -20px -20px 60px #ffffff' }}
-        >
-          <ProjectForm
-            onSubmit={handleSubmit}
-            onCancel={() => navigate(ROUTES.PROJECTS)}
-            loading={loading}
-          />
-        </div>
+        <ProjectForm
+          onSubmit={handleSubmit}
+          onCancel={() => navigate(ROUTES.PROJECTS)}
+          loading={loading}
+        />
       </div>
     </DashboardLayout>
   )
