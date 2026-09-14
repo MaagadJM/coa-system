@@ -31,7 +31,7 @@ export function AgencyDashboard() {
         <StatCard label="Completed" value={completed} color="green" />
       </div>
 
-      <div className="mt-8 rounded-xl p-6" style={{ background: '#f9fcff', boxShadow: '8px 8px 20px #d1d1d1, -8px -8px 20px #ffffff' }}>
+      <div className="mt-8 rounded-xl p-6" style={{ background: '#f9fcff', boxShadow: '0 2px 8px rgba(30,58,138,0.08)' }}>
         <h3 className="text-base font-semibold text-gray-500 uppercase tracking-wide mb-4">Quick Actions</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <ActionItem
@@ -52,16 +52,16 @@ export function AgencyDashboard() {
 
 function StatCard({ label, value, color = 'blue' }) {
   const accent = {
-    blue: 'border-t-blue-600',
-    green: 'border-t-green-500',
-    amber: 'border-t-amber-500',
-    red: 'border-t-red-500',
+    blue: 'border-t-[#1e3a8a]',
+    green: 'border-t-[#cc1f1f]',
+    amber: 'border-t-[#c8960a]',
+    red: 'border-t-[#cc1f1f]',
     purple: 'border-t-purple-500',
   }
   return (
     <div
       className={`rounded-xl border-t-4 ${accent[color]} p-5`}
-      style={{ background: '#f9fcff', boxShadow: '8px 8px 20px #d1d1d1, -8px -8px 20px #ffffff' }}
+      style={{ background: '#f9fcff', boxShadow: '0 2px 8px rgba(30,58,138,0.08)' }}
     >
       <p className="text-sm font-semibold text-gray-400 uppercase tracking-wide">{label}</p>
       <p className="text-5xl font-bold text-gray-900 mt-2">{value}</p>

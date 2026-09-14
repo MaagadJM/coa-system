@@ -37,17 +37,12 @@ export function ProjectEditPage() {
           <p className="text-base text-gray-500 mt-1">{project.projectName}</p>
         </div>
 
-        <div
-          className="rounded-3xl p-8"
-          style={{ background: '#f0f0f0', boxShadow: '20px 20px 60px #d1d1d1, -20px -20px 60px #ffffff' }}
-        >
-          <ProjectForm
-            defaultValues={project}
-            onSubmit={handleSubmit}
-            onCancel={() => navigate(ROUTES.PROJECTS)}
-            loading={loading}
-          />
-        </div>
+        <ProjectForm
+          defaultValues={project}
+          onSubmit={handleSubmit}
+          onCancel={() => navigate(ROUTES.PROJECTS)}
+          loading={loading}
+        />
       </div>
     </DashboardLayout>
   )

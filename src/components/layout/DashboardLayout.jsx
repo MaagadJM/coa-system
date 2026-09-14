@@ -27,8 +27,8 @@ export function DashboardLayout({ children }) {
       {/* Right column: header + content */}
       <div className="flex-1 flex flex-col min-w-0">
         <header
-          className="sticky top-0 z-10 border-b border-gray-200 px-4 h-16 flex items-center justify-between shrink-0"
-          style={{ background: 'rgba(249,252,255,0.95)' }}
+          className="sticky top-3 z-10 mx-3 rounded-2xl px-4 h-16 flex items-center justify-between shrink-0"
+          style={{ background: 'rgba(249,252,255,0.95)', boxShadow: '0 2px 8px rgba(30,58,138,0.10)' }}
         >
           {/* Hamburger — mobile only (desktop toggle is inside the sidebar) */}
           <button
@@ -41,9 +41,9 @@ export function DashboardLayout({ children }) {
             </svg>
           </button>
 
-          <div className="hidden lg:flex items-center gap-2">
+          <div className="flex items-center gap-2">
             <span className="text-xl font-bold text-blue-900 tracking-tight">CAP-In</span>
-            <span className="text-sm text-gray-400">· Commission on Audit</span>
+            <span className="hidden sm:inline text-sm text-gray-400">· Commission on Audit</span>
           </div>
 
           <div className="w-9 h-9 rounded-full flex items-center justify-center bg-blue-100 text-blue-900 text-sm font-bold tracking-wide select-none">
@@ -51,7 +51,7 @@ export function DashboardLayout({ children }) {
           </div>
         </header>
 
-        <main className="flex-1 p-4 lg:p-8">
+        <main className="flex-1 p-6 md:p-6 lg:p-8">
           {children}
         </main>
       </div>

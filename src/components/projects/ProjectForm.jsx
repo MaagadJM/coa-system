@@ -68,31 +68,35 @@ export function ProjectForm({ defaultValues = {}, onSubmit, onCancel, loading })
       <Section title="Procurement & Funding">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Field label="Mode of Procurement" required>
-            <select
-              name="procurementMode"
-              defaultValue={defaultValues.procurementMode ?? ''}
-              required
-              className={inputClass}
-            >
-              <option value="" disabled>Select mode...</option>
-              {PROCUREMENT_MODES.map((m) => (
-                <option key={m} value={m}>{m}</option>
-              ))}
-            </select>
+            <SelectWrapper>
+              <select
+                name="procurementMode"
+                defaultValue={defaultValues.procurementMode ?? ''}
+                required
+                className={selectClass}
+              >
+                <option value="" disabled>Select mode...</option>
+                {PROCUREMENT_MODES.map((m) => (
+                  <option key={m} value={m}>{m}</option>
+                ))}
+              </select>
+            </SelectWrapper>
           </Field>
 
           <Field label="Funding Source" required>
-            <select
-              name="fundingSource"
-              defaultValue={defaultValues.fundingSource ?? ''}
-              required
-              className={inputClass}
-            >
-              <option value="" disabled>Select source...</option>
-              {FUNDING_SOURCES.map((f) => (
-                <option key={f} value={f}>{f}</option>
-              ))}
-            </select>
+            <SelectWrapper>
+              <select
+                name="fundingSource"
+                defaultValue={defaultValues.fundingSource ?? ''}
+                required
+                className={selectClass}
+              >
+                <option value="" disabled>Select source...</option>
+                {FUNDING_SOURCES.map((f) => (
+                  <option key={f} value={f}>{f}</option>
+                ))}
+              </select>
+            </SelectWrapper>
           </Field>
         </div>
 
@@ -176,3 +180,18 @@ function Field({ label, required, children }) {
 }
 
 const inputClass = 'w-full px-3.5 py-2.5 text-base rounded-xl outline-none transition border border-gray-300 bg-[#f9fcff] text-slate-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20'
+
+const selectClass = inputClass + ' appearance-none pr-10'
+
+function SelectWrapper({ children }) {
+  return (
+    <div className="relative">
+      {children}
+      <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+    </div>
+  )
+}
