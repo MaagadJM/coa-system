@@ -102,8 +102,8 @@ export function Sidebar({ collapsed, onToggle, mobileOpen, onMobileClose }) {
       {/* Sidebar */}
       <aside
         className={[
-          // Mobile: fixed drawer, always full width
-          'fixed inset-y-0 left-0 z-40 w-64',
+          // Mobile: fixed drawer with margin and rounded corners
+          'fixed top-3 left-3 bottom-3 z-40 w-64 rounded-2xl',
           // Desktop: part of layout flow, full height
           'lg:sticky lg:top-3 lg:h-[calc(100vh-1.5rem)] lg:z-auto lg:my-3 lg:ml-3 lg:rounded-2xl',
           collapsed ? 'lg:w-16' : 'lg:w-64',
@@ -111,7 +111,7 @@ export function Sidebar({ collapsed, onToggle, mobileOpen, onMobileClose }) {
           'bg-blue-900 text-white flex flex-col overflow-hidden',
           // Slide transition
           'transform transition-all duration-300 ease-in-out',
-          mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0',
+          mobileOpen ? 'translate-x-0' : '-translate-x-[calc(100%+1rem)] lg:translate-x-0',
         ].join(' ')}
       >
         {/* Hamburger toggle — desktop only, sits at top of sidebar */}
