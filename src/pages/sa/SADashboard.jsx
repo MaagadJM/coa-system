@@ -9,7 +9,7 @@ export function SADashboard() {
 
   return (
     <DashboardLayout>
-      <div className="mb-8 rounded-2xl bg-linear-to-br from-blue-900 to-blue-700 px-8 py-6 text-white">
+      <div className="mb-8 rounded-2xl px-8 py-6 text-white" style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #1e3a8a 35%, rgba(200, 150, 10, 0.4) 70%, rgba(204, 31, 31, 0.4) 100%)' }}>
         <p className="text-base text-blue-300 mb-1">Supervising Auditor</p>
         <h2 className="text-3xl font-bold">{greeting}, {firstName}!</h2>
         <p className="text-base text-blue-200 mt-1">Review and approve audit team actions.</p>
