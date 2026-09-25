@@ -118,8 +118,8 @@ export function Sidebar({ mobileOpen, onMobileClose }) {
       {/* Sidebar */}
       <aside
         className={[
-          'fixed top-3 left-3 bottom-3 z-40 rounded-2xl overflow-hidden',
-          'lg:sticky lg:top-3 lg:h-[calc(100vh-1.5rem)] lg:z-auto lg:my-3 lg:ml-3 lg:rounded-2xl',
+          'max-lg:fixed max-lg:top-3 max-lg:left-3 max-lg:bottom-3 max-lg:z-40 rounded-2xl overflow-hidden',
+          'lg:my-3 lg:ml-3 lg:shrink-0',
           'flex flex-col py-4',
           'transform transition-all duration-300 ease-in-out',
           expanded ? 'w-52' : 'w-14',
