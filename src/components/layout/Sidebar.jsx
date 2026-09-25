@@ -93,20 +93,20 @@ export function Sidebar({ mobileOpen, onMobileClose }) {
 
       {/* Logout confirmation modal */}
       {confirmingLogout && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-          <div className="bg-white rounded-2xl shadow-xl w-full max-w-sm mx-4 p-6">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm">
+          <div className="bg-white/70 backdrop-blur-md rounded-2xl w-full max-w-sm mx-4 p-6">
             <h3 className="text-xl font-semibold text-gray-800 mb-1">Sign out</h3>
             <p className="text-base text-gray-500 mb-6">Are you sure you want to sign out of CAP-In?</p>
             <div className="flex gap-3">
               <button
                 onClick={() => setConfirmingLogout(false)}
-                className="flex-1 px-4 py-2.5 rounded-lg text-base font-medium border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors"
+                className="flex-1 px-4 py-2.5 rounded-xl text-base font-medium border border-white/60 bg-white/40 text-gray-700 hover:bg-white/60 transition-colors"
               >
                 Cancel
               </button>
               <button
                 onClick={handleLogout}
-                className="flex-1 px-4 py-2.5 rounded-lg text-base font-medium text-white bg-red-500 hover:bg-red-600 transition-colors"
+                className="flex-1 px-4 py-2.5 rounded-xl text-base font-medium text-white bg-red-500/80 hover:bg-red-500 transition-colors"
               >
                 Yes, sign out
               </button>
