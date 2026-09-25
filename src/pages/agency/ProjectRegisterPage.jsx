@@ -36,8 +36,8 @@ export function ProjectRegisterPage() {
         </nav>
 
         <div className="mb-6">
-          <h2 className="text-3xl font-bold text-gray-800">Register New Project</h2>
-          <p className="text-base text-gray-500 mt-1">
+          <h2 className="text-xl md:text-3xl font-bold text-gray-800">Register New Project</h2>
+          <p className="text-sm md:text-base text-gray-500 mt-1">
             Encode project details as soon as the contract award has been made.
           </p>
         </div>

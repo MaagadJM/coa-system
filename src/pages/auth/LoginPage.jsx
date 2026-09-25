@@ -57,19 +57,19 @@ export function LoginPage() {
       <div className="relative z-10 w-full max-w-sm mx-4">
         {/* Branding */}
         <div className="text-center mb-8">
-          <p className="text-sm uppercase tracking-widest text-gray-400 mb-1">Republic of the Philippines</p>
-          <h1 className="text-4xl font-bold text-gray-800">CAP-In</h1>
-          <p className="text-base mt-1 text-gray-500">Commission on Audit</p>
+          <p className="text-[10px] md:text-sm uppercase tracking-widest text-gray-400 mb-1">Republic of the Philippines</p>
+          <h1 className="text-2xl md:text-4xl font-bold text-gray-800">CAP-In</h1>
+          <p className="text-xs md:text-base mt-1 text-gray-500">Commission on Audit</p>
         </div>
 
         {/* Card */}
-        <div className="p-8 rounded-2xl bg-white/60 backdrop-blur-sm">
-          <h2 className="text-3xl font-bold mb-1 text-gray-800">Sign in</h2>
-          <p className="text-base mb-8 text-gray-500">Access your CAP-In account</p>
+        <div className="p-5 md:p-8 rounded-2xl bg-white/60 backdrop-blur-sm">
+          <h2 className="text-xl md:text-3xl font-bold mb-1 text-gray-800">Sign in</h2>
+          <p className="text-sm md:text-base mb-5 md:mb-8 text-gray-500">Access your CAP-In account</p>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="block text-sm font-semibold uppercase tracking-wide mb-2 text-gray-600">
+              <label className="block text-xs md:text-sm font-semibold uppercase tracking-wide mb-1.5 md:mb-2 text-gray-600">
                 Email Address
               </label>
               <input
@@ -79,12 +79,12 @@ export function LoginPage() {
                 required
                 autoComplete="email"
                 placeholder="you@example.gov"
-                className="w-full px-4 py-3 text-base rounded-xl outline-none transition border border-white/80 bg-white/50 text-gray-800 placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                className="w-full px-3 py-2.5 md:px-4 md:py-3 text-sm md:text-base rounded-xl outline-none transition border border-white/80 bg-white/50 text-gray-800 placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-semibold uppercase tracking-wide mb-2 text-gray-600">
+              <label className="block text-xs md:text-sm font-semibold uppercase tracking-wide mb-1.5 md:mb-2 text-gray-600">
                 Password
               </label>
               <div className="relative">
@@ -95,7 +95,7 @@ export function LoginPage() {
                   required
                   autoComplete="current-password"
                   placeholder="••••••••"
-                  className="w-full px-4 py-3 pr-11 text-base rounded-xl outline-none transition border border-white/80 bg-white/50 text-gray-800 placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                  className="w-full px-3 py-2.5 md:px-4 md:py-3 pr-11 text-sm md:text-base rounded-xl outline-none transition border border-white/80 bg-white/50 text-gray-800 placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
                 />
                 <button
                   type="button"
@@ -125,7 +125,7 @@ export function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full text-white font-semibold py-3 rounded-xl text-base disabled:opacity-60 hover:opacity-90 transition-opacity"
+              className="w-full text-white font-semibold py-2.5 md:py-3 rounded-xl text-sm md:text-base disabled:opacity-60 hover:opacity-90 transition-opacity"
               style={{ background: 'linear-gradient(145deg, #1e3a8a, #2563eb)' }}
             >
               {loading ? 'Signing in...' : 'Sign In'}
@@ -134,7 +134,7 @@ export function LoginPage() {
         </div>
 
         {/* Footer */}
-        <p className="text-center text-sm text-gray-400 mt-6">
+        <p className="text-center text-[10px] md:text-sm text-gray-400 mt-4 md:mt-6">
           Collaborative Audit Platform for Infrastructure &mdash; CAP-In &copy; {new Date().getFullYear()}
         </p>
       </div>

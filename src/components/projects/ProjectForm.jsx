@@ -142,14 +142,14 @@ export function ProjectForm({ defaultValues = {}, onSubmit, onCancel, loading })
         <button
           type="button"
           onClick={onCancel}
-          className="px-5 py-2.5 text-base font-medium rounded-xl border border-white/60 bg-white/40 text-gray-600 hover:bg-white/60 transition-colors"
+          className="px-4 py-2 md:px-5 md:py-2.5 text-sm md:text-base font-medium rounded-xl border border-white/60 bg-white/40 text-gray-600 hover:bg-white/60 transition-colors"
         >
           Cancel
         </button>
         <button
           type="submit"
           disabled={loading}
-          className="px-5 py-2.5 text-base font-semibold text-white rounded-xl disabled:opacity-60 hover:opacity-90 transition-opacity"
+          className="px-4 py-2 md:px-5 md:py-2.5 text-sm md:text-base font-semibold text-white rounded-xl disabled:opacity-60 hover:opacity-90 transition-opacity"
           style={{ background: 'linear-gradient(145deg, #1e3a8a, #2563eb)' }}
         >
           {loading ? 'Saving...' : 'Save Project'}
@@ -161,8 +161,8 @@ export function ProjectForm({ defaultValues = {}, onSubmit, onCancel, loading })
 
 function Section({ title, children }) {
   return (
-    <div className="rounded-2xl p-5 space-y-4 bg-white/40">
-      <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-500">{title}</h3>
+    <div className="rounded-2xl p-4 md:p-5 space-y-3 md:space-y-4 bg-white/40">
+      <h3 className="text-xs md:text-sm font-semibold uppercase tracking-wide text-gray-500">{title}</h3>
       {children}
     </div>
   )
@@ -171,7 +171,7 @@ function Section({ title, children }) {
 function Field({ label, required, children }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-sm font-semibold uppercase tracking-wide text-gray-600">
+      <label className="text-xs md:text-sm font-semibold uppercase tracking-wide text-gray-600">
         {label} {required && <span className="text-red-400">*</span>}
       </label>
       {children}
@@ -179,7 +179,7 @@ function Field({ label, required, children }) {
   )
 }
 
-const inputClass = 'w-full px-3.5 py-2.5 text-base rounded-xl outline-none transition border border-white/60 bg-white/50 text-gray-800 placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20'
+const inputClass = 'w-full px-3 py-2 md:px-3.5 md:py-2.5 text-sm md:text-base rounded-xl outline-none transition border border-white/60 bg-white/50 text-gray-800 placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20'
 
 const selectClass = inputClass + ' appearance-none pr-10'
 

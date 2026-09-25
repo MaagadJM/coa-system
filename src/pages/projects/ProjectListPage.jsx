@@ -27,17 +27,17 @@ export function ProjectListPage() {
 
   return (
     <DashboardLayout>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
         <div>
-          <h2 className="text-3xl font-bold text-gray-800">Infrastructure Projects</h2>
-          <p className="text-base text-gray-500 mt-1">
+          <h2 className="text-xl md:text-3xl font-bold text-gray-800">Infrastructure Projects</h2>
+          <p className="text-sm md:text-base text-gray-500 mt-1">
             {visibleProjects.length} project{visibleProjects.length !== 1 ? 's' : ''} found
           </p>
         </div>
         {canRegister && visibleProjects.length > 0 && (
           <button
             onClick={() => navigate(ROUTES.PROJECT_NEW)}
-            className="px-4 py-2.5 text-white text-base font-semibold rounded-xl hover:opacity-90 transition-opacity"
+            className="self-start sm:self-auto px-3 py-2 md:px-4 md:py-2.5 text-white text-xs md:text-sm font-semibold rounded-xl hover:opacity-90 transition-opacity shrink-0"
             style={{ background: 'linear-gradient(145deg, #1e3a8a, #2563eb)' }}
           >
             + Register Project
@@ -68,46 +68,72 @@ export function ProjectListPage() {
           )}
         </div>
       ) : (
-        <div
-          className="rounded-2xl overflow-hidden"
-          style={{ background: 'linear-gradient(to right, rgb(232,235,240), rgba(255,255,255,0.6) 33%, rgba(255,255,255,0.4) 66%, rgba(255,255,255,0.3))' }}
-        >
-          <table className="w-full text-base">
-            <thead className="border-b border-white/40">
-              <tr>
-                <th className="text-left px-6 py-4 text-sm font-semibold text-gray-500 uppercase tracking-wide">Project</th>
-                <th className="text-left px-6 py-4 text-sm font-semibold text-gray-500 uppercase tracking-wide">Agency</th>
-                <th className="text-left px-6 py-4 text-sm font-semibold text-gray-500 uppercase tracking-wide">Cost</th>
-                <th className="text-left px-6 py-4 text-sm font-semibold text-gray-500 uppercase tracking-wide">Completion</th>
-                <th className="text-left px-6 py-4 text-sm font-semibold text-gray-500 uppercase tracking-wide">Status</th>
-                <th className="px-6 py-4"></th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-white/30">
-              {visibleProjects.map((project) => (
-                <tr
-                  key={project.id}
-                  onClick={() => navigate(`/projects/${project.id}`)}
-                  className="hover:bg-white/20 transition-colors cursor-pointer"
-                >
-                  <td className="px-6 py-4">
-                    <p className="font-semibold text-gray-800 leading-snug">{project.projectName}</p>
-                    <p className="text-sm text-gray-400 mt-0.5">{project.location}</p>
-                  </td>
-                  <td className="px-6 py-4 text-gray-500 text-sm">{project.implementingAgency}</td>
-                  <td className="px-6 py-4 text-gray-800 font-medium">{formatCurrency(project.projectCost)}</td>
-                  <td className="px-6 py-4 text-gray-500 text-sm">{project.completionDate}</td>
-                  <td className="px-6 py-4">
-                    <ProjectStatusBadge status={project.status} />
-                  </td>
-                  <td className="px-6 py-4 text-right">
-                    <span className="text-blue-700 hover:text-blue-900 text-sm font-semibold">View →</span>
-                  </td>
+        <>
+          {/* Table for md+ */}
+          <div
+            className="hidden md:block rounded-2xl overflow-hidden"
+            style={{ background: 'linear-gradient(to right, rgb(232,235,240), rgba(255,255,255,0.6) 33%, rgba(255,255,255,0.4) 66%, rgba(255,255,255,0.3))' }}
+          >
+            <table className="w-full text-base">
+              <thead className="border-b border-white/40">
+                <tr>
+                  <th className="text-left px-6 py-4 text-sm font-semibold text-gray-500 uppercase tracking-wide">Project</th>
+                  <th className="text-left px-6 py-4 text-sm font-semibold text-gray-500 uppercase tracking-wide">Agency</th>
+                  <th className="text-left px-6 py-4 text-sm font-semibold text-gray-500 uppercase tracking-wide">Cost</th>
+                  <th className="text-left px-6 py-4 text-sm font-semibold text-gray-500 uppercase tracking-wide">Completion</th>
+                  <th className="text-left px-6 py-4 text-sm font-semibold text-gray-500 uppercase tracking-wide">Status</th>
+                  <th className="px-6 py-4"></th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody className="divide-y divide-white/30">
+                {visibleProjects.map((project) => (
+                  <tr
+                    key={project.id}
+                    onClick={() => navigate(`/projects/${project.id}`)}
+                    className="hover:bg-white/20 transition-colors cursor-pointer"
+                  >
+                    <td className="px-6 py-4">
+                      <p className="font-semibold text-gray-800 leading-snug">{project.projectName}</p>
+                      <p className="text-sm text-gray-400 mt-0.5">{project.location}</p>
+                    </td>
+                    <td className="px-6 py-4 text-gray-500 text-sm">{project.implementingAgency}</td>
+                    <td className="px-6 py-4 text-gray-800 font-medium">{formatCurrency(project.projectCost)}</td>
+                    <td className="px-6 py-4 text-gray-500 text-sm">{project.completionDate}</td>
+                    <td className="px-6 py-4">
+                      <ProjectStatusBadge status={project.status} />
+                    </td>
+                    <td className="px-6 py-4 text-right">
+                      <span className="text-blue-700 hover:text-blue-900 text-sm font-semibold">View →</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Cards for mobile */}
+          <div className="md:hidden space-y-3">
+            {visibleProjects.map((project) => (
+              <button
+                key={project.id}
+                onClick={() => navigate(`/projects/${project.id}`)}
+                className="w-full text-left rounded-2xl bg-white/40 px-4 py-4 transition-colors hover:bg-white/60"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-gray-800 leading-snug">{project.projectName}</p>
+                    <p className="text-xs text-gray-400 mt-0.5">{project.location}</p>
+                  </div>
+                  <ProjectStatusBadge status={project.status} />
+                </div>
+                <div className="flex items-center justify-between mt-2 text-xs">
+                  <span className="text-gray-500">{project.implementingAgency}</span>
+                  <span className="text-gray-800 font-medium">{formatCurrency(project.projectCost)}</span>
+                </div>
+              </button>
+            ))}
+          </div>
+        </>
       )}
     </DashboardLayout>
   )

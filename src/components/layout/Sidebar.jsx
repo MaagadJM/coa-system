@@ -83,30 +83,75 @@ export function Sidebar({ mobileOpen, onMobileClose }) {
 
   return (
     <>
-      {/* Mobile backdrop */}
+      {/* Mobile menu overlay */}
       {mobileOpen && (
-        <div
-          className="fixed inset-0 z-30 bg-black/50 lg:hidden"
-          onClick={onMobileClose}
-        />
+        <div className="fixed inset-0 z-40 md:hidden flex items-center justify-center bg-black/20 backdrop-blur-sm" onClick={onMobileClose}>
+          <div className="bg-white/70 backdrop-blur-md rounded-2xl w-full max-w-xs mx-4 p-6 flex flex-col gap-4" onClick={(e) => e.stopPropagation()}>
+            {/* User info */}
+            <div className="text-center mb-2">
+              <p className="text-base font-semibold text-gray-800">{user?.name}</p>
+              <p className="text-sm text-gray-500">{ROLE_LABELS[user?.role]}</p>
+              {user?.agency && <p className="text-sm text-gray-400">{user.agency}</p>}
+            </div>
+
+            {/* Nav items */}
+            <nav className="flex flex-col gap-2">
+              {navItems.map((item) => (
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  end={item.end}
+                  onClick={onMobileClose}
+                  className={({ isActive }) =>
+                    [
+                      'h-12 rounded-xl flex items-center gap-3 px-4 transition-colors',
+                      isActive
+                        ? 'bg-white/60 text-gray-800'
+                        : 'text-gray-500 hover:bg-white/40',
+                    ].join(' ')
+                  }
+                >
+                  {item.icon}
+                  <span className="text-sm font-medium uppercase tracking-wide">{item.label}</span>
+                  {item.badge && badgeCount > 0 && (
+                    <span className="ml-auto bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                      {badgeCount}
+                    </span>
+                  )}
+                </NavLink>
+              ))}
+            </nav>
+
+            <hr className="border-gray-200/60" />
+
+            {/* Sign out */}
+            <button
+              onClick={() => { onMobileClose(); setConfirmingLogout(true) }}
+              className="h-1 rounded-xl flex items-center gap-3 px-4 text-gray-400 hover:text-red-500 hover:bg-red-50/50 transition-colors"
+            >
+              <LogoutIcon />
+              <span className="text-sm font-medium">Sign Out</span>
+            </button>
+          </div>
+        </div>
       )}
 
       {/* Logout confirmation modal */}
       {confirmingLogout && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm">
-          <div className="bg-white/70 backdrop-blur-md rounded-2xl w-full max-w-sm mx-4 p-6">
-            <h3 className="text-xl font-semibold text-gray-800 mb-1">Sign out</h3>
-            <p className="text-base text-gray-500 mb-6">Are you sure you want to sign out of CAP-In?</p>
+          <div className="bg-white/70 backdrop-blur-md rounded-2xl w-full max-w-xs md:max-w-sm mx-4 p-4 md:p-6">
+            <h3 className="text-base md:text-xl font-semibold text-gray-800 mb-1">Sign out</h3>
+            <p className="text-sm md:text-base text-gray-500 mb-4 md:mb-6">Are you sure you want to sign out of CAP-In?</p>
             <div className="flex gap-3">
               <button
                 onClick={() => setConfirmingLogout(false)}
-                className="flex-1 px-4 py-2.5 rounded-xl text-base font-medium border border-white/60 bg-white/40 text-gray-700 hover:bg-white/60 transition-colors"
+                className="flex-1 px-3 py-2 md:px-4 md:py-2.5 rounded-xl text-sm md:text-base font-medium border border-white/60 bg-white/40 text-gray-700 hover:bg-white/60 transition-colors"
               >
                 Cancel
               </button>
               <button
                 onClick={handleLogout}
-                className="flex-1 px-4 py-2.5 rounded-xl text-base font-medium text-white bg-red-500/80 hover:bg-red-500 transition-colors"
+                className="flex-1 px-3 py-2 md:px-4 md:py-2.5 rounded-xl text-sm md:text-base font-medium text-white bg-red-500/80 hover:bg-red-500 transition-colors"
               >
                 Yes, sign out
               </button>
@@ -118,12 +163,11 @@ export function Sidebar({ mobileOpen, onMobileClose }) {
       {/* Sidebar */}
       <aside
         className={[
-          'max-lg:fixed max-lg:top-3 max-lg:left-3 max-lg:bottom-3 max-lg:z-40 rounded-2xl overflow-hidden',
-          'lg:my-3 lg:ml-3 lg:shrink-0',
-          'flex flex-col py-4',
+          'hidden md:flex rounded-2xl overflow-hidden',
+          'md:my-3 md:ml-3 md:shrink-0',
+          'flex-col py-4',
           'transform transition-all duration-300 ease-in-out',
           expanded ? 'w-52' : 'w-14',
-          mobileOpen ? 'translate-x-0' : '-translate-x-[calc(100%+1rem)] lg:translate-x-0',
         ].join(' ')}
         style={{}}
       >

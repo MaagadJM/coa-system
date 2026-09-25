@@ -14,7 +14,7 @@ export function DashboardLayout({ children }) {
     .toUpperCase() ?? '?'
 
   return (
-    <div className="relative flex min-h-screen overflow-hidden">
+    <div className="relative flex h-screen overflow-hidden">
       {/* Gradient background layer */}
       <div
         className="fixed inset-0 z-0"
@@ -42,11 +42,11 @@ export function DashboardLayout({ children }) {
 
         <div className="flex-1 flex flex-col min-w-0 overflow-y-auto">
           <header
-            className="sticky top-3 z-10 mx-3 rounded-2xl px-4 h-14 flex items-center justify-between shrink-0"
+            className="sticky top-0 z-10 px-4 lg:px-4 h-14 flex items-center justify-between shrink-0 bg-white/0 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none"
           >
             <button
               onClick={() => setMobileOpen((o) => !o)}
-              className="lg:hidden p-2 rounded-full text-gray-500 hover:bg-white/30 transition-colors"
+              className="md:hidden p-2 rounded-full text-gray-500 hover:bg-white/30 transition-colors"
               aria-label="Open menu"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

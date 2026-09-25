@@ -33,8 +33,8 @@ export function ProjectEditPage() {
     <DashboardLayout>
       <div className="max-w-3xl mx-auto">
         <div className="mb-6">
-          <h2 className="text-3xl font-bold text-gray-800">Edit Project</h2>
-          <p className="text-base text-gray-500 mt-1">{project.projectName}</p>
+          <h2 className="text-xl md:text-3xl font-bold text-gray-800">Edit Project</h2>
+          <p className="text-sm md:text-base text-gray-500 mt-1">{project.projectName}</p>
         </div>
 
         <ProjectForm

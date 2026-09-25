@@ -40,11 +40,11 @@ export function ProjectDetailPage() {
           <div>
             <button
               onClick={() => navigate(-1)}
-              className="text-base text-blue-700 hover:text-blue-900 mb-2 block"
+              className="w-8 h-8 rounded-full bg-white/60 text-gray-500 hover:text-gray-700 hover:bg-white/80 flex items-center justify-center transition-colors mb-2"
             >
-              &larr; Back
+              <span className="text-sm">&larr;</span>
             </button>
-            <h2 className="text-3xl font-bold text-gray-800">{project.projectName}</h2>
+            <h2 className="text-xl md:text-3xl font-bold text-gray-800">{project.projectName}</h2>
             <div className="mt-2">
               <ProjectStatusBadge status={project.status} />
             </div>
@@ -52,7 +52,7 @@ export function ProjectDetailPage() {
           {canEdit && (
             <button
               onClick={() => navigate(`/projects/${id}/edit`)}
-              className="px-4 py-2 text-base font-medium text-gray-600 border border-white/60 bg-white/40 rounded-xl hover:bg-white/60 transition-colors"
+              className="px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-base font-medium text-gray-600 border border-white/60 bg-white/40 rounded-xl hover:bg-white/60 transition-colors"
             >
               Edit Project
             </button>
@@ -102,8 +102,8 @@ export function ProjectDetailPage() {
 function DetailCard({ title, children }) {
   return (
     <div className="rounded-2xl overflow-hidden bg-white/40">
-      <div className="px-5 py-3.5 bg-white/30">
-        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide">{title}</h3>
+      <div className="px-4 md:px-5 py-2.5 md:py-3.5 bg-white/30">
+        <h3 className="text-xs md:text-sm font-semibold text-gray-500 uppercase tracking-wide">{title}</h3>
       </div>
       <div className="divide-y divide-white/40">{children}</div>
     </div>
@@ -112,9 +112,9 @@ function DetailCard({ title, children }) {
 
 function DetailRow({ label, value }) {
   return (
-    <div className="flex px-5 py-3.5 gap-4">
-      <span className="text-base text-gray-500 w-48 shrink-0">{label}</span>
-      <span className="text-base text-gray-800 font-medium">{value ?? '—'}</span>
+    <div className="flex px-4 md:px-5 py-2.5 md:py-3.5 gap-3 md:gap-4">
+      <span className="text-xs md:text-base text-gray-500 w-32 md:w-48 shrink-0">{label}</span>
+      <span className="text-xs md:text-base text-gray-800 font-medium">{value ?? '—'}</span>
     </div>
   )
 }

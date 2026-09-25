@@ -31,8 +31,8 @@ export function AgencyDashboard() {
     <DashboardLayout>
       {/* Greeting */}
       <div className="mb-6">
-        <p className="text-sm font-semibold uppercase tracking-widest text-gray-400 mb-1">{user.agency}</p>
-        <h2 className="text-3xl font-bold text-gray-800">{greeting}, {firstName}!</h2>
+        <p className="text-[10px] md:text-sm font-semibold uppercase tracking-widest text-gray-400 mb-1">{user.agency}</p>
+        <h2 className="text-xl md:text-3xl font-bold text-gray-800">{greeting}, {firstName}!</h2>
       </div>
 
       {/* Main board card — folder style */}
