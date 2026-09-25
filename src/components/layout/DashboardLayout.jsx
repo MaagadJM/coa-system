@@ -15,21 +15,11 @@ export function DashboardLayout({ children }) {
 
   return (
     <div className="relative flex h-screen overflow-hidden">
-      {/* Gradient background layer */}
+      {/* Subtle neutral gradient background */}
       <div
         className="fixed inset-0 z-0"
         style={{
-          background: 'linear-gradient(135deg, #1e3a8a 0%, #2563eb 30%, #c8960a 55%, #cc1f1f 100%)',
-        }}
-      />
-
-      {/* Frosted overlay */}
-      <div
-        className="fixed inset-0 z-0"
-        style={{
-          background: 'rgba(230, 233, 238, 0.82)',
-          backdropFilter: 'blur(60px)',
-          WebkitBackdropFilter: 'blur(60px)',
+          background: 'linear-gradient(to bottom, #ffffff 0%, #d5d8dc 100%)',
         }}
       />
 

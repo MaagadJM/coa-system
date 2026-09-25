@@ -165,7 +165,7 @@ export function Sidebar({ mobileOpen, onMobileClose }) {
         className={[
           'hidden md:flex rounded-2xl overflow-hidden',
           'md:my-3 md:ml-3 md:shrink-0',
-          'flex-col py-4',
+          'flex-col pt-10 pb-4',
           'transform transition-all duration-300 ease-in-out',
           expanded ? 'w-52' : 'w-14',
         ].join(' ')}
@@ -174,7 +174,7 @@ export function Sidebar({ mobileOpen, onMobileClose }) {
         {/* Toggle button */}
         <button
           onClick={() => setExpanded((v) => !v)}
-          className="w-10 h-10 ml-2 rounded-full bg-white/80 text-gray-500 hover:text-gray-700 hover:bg-gray-100 flex items-center justify-center mb-4 transition-colors shrink-0"
+          className="w-10 h-10 ml-2 rounded-full bg-white/80 text-gray-500 hover:text-gray-700 hover:bg-gray-100 flex items-center justify-center mb-2 transition-colors shrink-0"
         >
           {expanded ? <ChevronLeftIcon /> : <ChevronRightIcon />}
         </button>

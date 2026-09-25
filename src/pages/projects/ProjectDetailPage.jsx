@@ -40,9 +40,9 @@ export function ProjectDetailPage() {
           <div>
             <button
               onClick={() => navigate(-1)}
-              className="w-8 h-8 rounded-full bg-white/60 text-gray-500 hover:text-gray-700 hover:bg-white/80 flex items-center justify-center transition-colors mb-2"
+              className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-white/60 text-gray-500 hover:text-gray-700 hover:bg-white/80 flex items-center justify-center transition-colors mb-2"
             >
-              <span className="text-sm">&larr;</span>
+              <span className="text-sm md:text-2xl">&larr;</span>
             </button>
             <h2 className="text-xl md:text-3xl font-bold text-gray-800">{project.projectName}</h2>
             <div className="mt-2">

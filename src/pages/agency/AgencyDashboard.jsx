@@ -75,7 +75,7 @@ export function AgencyDashboard() {
         {/* Card body */}
         <div
           className="rounded-2xl rounded-tl-none rounded-tr-none pt-6 pb-6 px-6"
-          style={{ background: 'linear-gradient(to right, rgb(232,235,240), rgba(255,255,255,0.6) 33%, rgba(255,255,255,0.4) 66%, rgba(255,255,255,0.3))' }}
+          style={{ background: 'linear-gradient(to right, rgb(232,235,240), rgba(255,255,255,0.6) 53%, rgba(255,255,255,0.4) 66%, rgba(255,255,255,0.3))' }}
         >
           {/* Columns */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
