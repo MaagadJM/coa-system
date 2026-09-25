@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 import { ROLE_HOME } from '../../lib/constants'
 
@@ -14,8 +14,7 @@ export function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
 
   if (user) {
-    navigate(ROLE_HOME[user.role], { replace: true })
-    return null
+    return <Navigate to={ROLE_HOME[user.role]} replace />
   }
 
   function handleSubmit(e) {
