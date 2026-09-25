@@ -46,8 +46,11 @@ export function ProjectListPage() {
       </div>
 
       {visibleProjects.length === 0 ? (
-        <div className="rounded-xl flex flex-col items-center justify-center py-24 text-center border border-gray-200" style={{ background: '#f9fcff', boxShadow: '0 2px 8px rgba(30,58,138,0.08)' }}>
-          <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4 bg-gray-100">
+        <div
+          className="rounded-2xl flex flex-col items-center justify-center py-24 text-center"
+          style={{ background: 'linear-gradient(to right, rgb(232,235,240), rgba(255,255,255,0.6) 33%, rgba(255,255,255,0.4) 66%, rgba(255,255,255,0.3))' }}
+        >
+          <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4 bg-white/50">
             <svg className="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
             </svg>
@@ -65,9 +68,12 @@ export function ProjectListPage() {
           )}
         </div>
       ) : (
-        <div className="rounded-xl overflow-hidden border border-gray-200" style={{ background: '#f9fcff' }}>
+        <div
+          className="rounded-2xl overflow-hidden"
+          style={{ background: 'linear-gradient(to right, rgb(232,235,240), rgba(255,255,255,0.6) 33%, rgba(255,255,255,0.4) 66%, rgba(255,255,255,0.3))' }}
+        >
           <table className="w-full text-base">
-            <thead className="border-b border-gray-200 bg-gray-50">
+            <thead className="border-b border-white/40">
               <tr>
                 <th className="text-left px-6 py-4 text-sm font-semibold text-gray-500 uppercase tracking-wide">Project</th>
                 <th className="text-left px-6 py-4 text-sm font-semibold text-gray-500 uppercase tracking-wide">Agency</th>
@@ -77,12 +83,12 @@ export function ProjectListPage() {
                 <th className="px-6 py-4"></th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-100">
+            <tbody className="divide-y divide-white/30">
               {visibleProjects.map((project) => (
                 <tr
                   key={project.id}
                   onClick={() => navigate(`/projects/${project.id}`)}
-                  className="hover:bg-blue-50/50 transition-colors cursor-pointer"
+                  className="hover:bg-white/20 transition-colors cursor-pointer"
                 >
                   <td className="px-6 py-4">
                     <p className="font-semibold text-gray-800 leading-snug">{project.projectName}</p>

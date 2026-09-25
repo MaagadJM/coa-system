@@ -52,7 +52,7 @@ export function ProjectDetailPage() {
           {canEdit && (
             <button
               onClick={() => navigate(`/projects/${id}/edit`)}
-              className="px-4 py-2 text-base font-medium text-blue-800 border border-blue-300 rounded-lg hover:bg-blue-50 transition-colors"
+              className="px-4 py-2 text-base font-medium text-gray-600 border border-white/60 bg-white/40 rounded-xl hover:bg-white/60 transition-colors"
             >
               Edit Project
             </button>
@@ -101,11 +101,11 @@ export function ProjectDetailPage() {
 
 function DetailCard({ title, children }) {
   return (
-    <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-      <div className="px-5 py-3.5 bg-gray-50 border-b border-gray-200">
+    <div className="rounded-2xl overflow-hidden bg-white/40">
+      <div className="px-5 py-3.5 bg-white/30">
         <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide">{title}</h3>
       </div>
-      <div className="divide-y divide-gray-100">{children}</div>
+      <div className="divide-y divide-white/40">{children}</div>
     </div>
   )
 }
