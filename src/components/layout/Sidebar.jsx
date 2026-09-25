@@ -28,6 +28,22 @@ function LogoutIcon() {
   )
 }
 
+function ChevronLeftIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+    </svg>
+  )
+}
+
+function ChevronRightIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+    </svg>
+  )
+}
+
 const NAV_ITEMS = {
   admin: [
     { label: 'Dashboard', to: ROUTES.ADMIN, end: true, icon: <HomeIcon /> },
@@ -50,10 +66,11 @@ const NAV_ITEMS = {
   ],
 }
 
-export function Sidebar({ collapsed, onToggle, mobileOpen, onMobileClose }) {
+export function Sidebar({ mobileOpen, onMobileClose }) {
   const { user, logout } = useAuth()
   const { unreadCount } = useProjects()
   const navigate = useNavigate()
+  const [expanded, setExpanded] = useState(false)
   const [confirmingLogout, setConfirmingLogout] = useState(false)
 
   function handleLogout() {
@@ -89,8 +106,7 @@ export function Sidebar({ collapsed, onToggle, mobileOpen, onMobileClose }) {
               </button>
               <button
                 onClick={handleLogout}
-                className="flex-1 px-4 py-2.5 rounded-lg text-base font-medium text-white"
-                style={{ background: 'linear-gradient(145deg, #b91c1c, #ef4444)' }}
+                className="flex-1 px-4 py-2.5 rounded-lg text-base font-medium text-white bg-red-500 hover:bg-red-600 transition-colors"
               >
                 Yes, sign out
               </button>
@@ -102,55 +118,53 @@ export function Sidebar({ collapsed, onToggle, mobileOpen, onMobileClose }) {
       {/* Sidebar */}
       <aside
         className={[
-          // Mobile: fixed drawer with margin and rounded corners
-          'fixed top-3 left-3 bottom-3 z-40 w-64 rounded-2xl',
-          // Desktop: part of layout flow, full height
+          'fixed top-3 left-3 bottom-3 z-40 rounded-2xl overflow-hidden',
           'lg:sticky lg:top-3 lg:h-[calc(100vh-1.5rem)] lg:z-auto lg:my-3 lg:ml-3 lg:rounded-2xl',
-          collapsed ? 'lg:w-16' : 'lg:w-64',
-          // Appearance
-          'bg-blue-900 text-white flex flex-col overflow-hidden',
-          // Slide transition
+          'flex flex-col py-4',
           'transform transition-all duration-300 ease-in-out',
+          expanded ? 'w-52' : 'w-14',
           mobileOpen ? 'translate-x-0' : '-translate-x-[calc(100%+1rem)] lg:translate-x-0',
         ].join(' ')}
+        style={{}}
       >
-        {/* Hamburger toggle — desktop only, sits at top of sidebar */}
-        <div className="hidden lg:flex items-center px-3 py-4 border-b border-blue-800 shrink-0">
-          <button
-            onClick={onToggle}
-            className="p-2 rounded-lg text-blue-300 hover:text-white hover:bg-white/10 transition-colors"
-            aria-label="Toggle sidebar"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
+        {/* Toggle button */}
+        <button
+          onClick={() => setExpanded((v) => !v)}
+          className="w-10 h-10 ml-2 rounded-full bg-white/80 text-gray-500 hover:text-gray-700 hover:bg-gray-100 flex items-center justify-center mb-4 transition-colors shrink-0"
+        >
+          {expanded ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+        </button>
 
-        <nav className="flex-1 px-2 py-4 space-y-1 overflow-y-auto">
+        {/* Nav items */}
+        <nav className="flex flex-col gap-2 flex-1 px-2">
           {navItems.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
               end={item.end}
               onClick={onMobileClose}
-              title={collapsed ? item.label : undefined}
+              title={!expanded ? item.label : undefined}
               className={({ isActive }) =>
                 [
-                  'flex items-center gap-3 px-3 py-2.5 rounded-lg text-base',
+                  'relative h-10 rounded-full flex items-center gap-3 transition-colors whitespace-nowrap',
+                  expanded ? 'px-3' : 'w-10 justify-center',
                   isActive
-                    ? 'sidebar-nav-active text-white font-medium'
-                    : 'sidebar-nav-item text-blue-200 hover:text-white',
-                  collapsed ? 'lg:justify-center' : '',
+                    ? 'bg-gray-200 text-gray-800'
+                    : 'bg-white/80 text-gray-400 hover:text-gray-600 hover:bg-gray-100',
                 ].join(' ')
               }
             >
               {item.icon}
-              <span className={`truncate uppercase tracking-wide ${collapsed ? 'lg:hidden' : ''}`}>
-                {item.label}
-              </span>
+              {expanded && (
+                <span className="text-sm font-medium uppercase tracking-wide">{item.label}</span>
+              )}
               {item.badge && badgeCount > 0 && (
-                <span className={`bg-red-500 text-white text-sm font-bold px-1.5 py-0.5 rounded-full min-w-5 text-center ml-auto ${collapsed ? 'lg:hidden' : ''}`}>
+                <span className={[
+                  'bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center',
+                  expanded
+                    ? 'ml-auto w-5 h-5 text-xs'
+                    : 'absolute -top-0.5 -right-0.5 w-4 h-4',
+                ].join(' ')}>
                   {badgeCount}
                 </span>
               )}
@@ -158,28 +172,34 @@ export function Sidebar({ collapsed, onToggle, mobileOpen, onMobileClose }) {
           ))}
         </nav>
 
-        {/* User info + sign out */}
-        <div className="border-t border-blue-800 px-2 py-3">
-          <div className={`mb-2 px-3 ${collapsed ? 'lg:hidden' : ''}`}>
-            <p className="text-base font-medium text-white truncate">{user?.name}</p>
-            <p className="text-sm font-medium text-blue-300 truncate">{ROLE_LABELS[user?.role]}</p>
-            {user?.agency && (
-              <p className="text-sm text-blue-500 mt-0.5 truncate">{user.agency}</p>
-            )}
-          </div>
-          <button
-            onClick={() => setConfirmingLogout(true)}
-            title={collapsed ? 'Sign Out' : undefined}
-            className={[
-              'sidebar-nav-item w-full flex items-center gap-3 px-3 py-2 rounded-lg',
-              'font-medium text-base text-blue-200 hover:text-white',
-              collapsed ? 'lg:justify-center' : '',
-            ].join(' ')}
-          >
-            <LogoutIcon />
-            <span className={collapsed ? 'lg:hidden' : ''}>Sign Out</span>
-          </button>
+        {/* User info */}
+        <div className={[
+          'overflow-hidden border-t border-gray-200 transition-all duration-300 ease-in-out',
+          expanded ? 'max-h-24 opacity-100 px-4 mb-3 pt-3' : 'max-h-0 opacity-0 px-4 mb-0 pt-0 border-transparent',
+        ].join(' ')}>
+          <p className="text-sm font-medium text-gray-700 truncate">{user?.name}</p>
+          <p className="text-xs text-gray-400 truncate">{ROLE_LABELS[user?.role]}</p>
+          {user?.agency && (
+            <p className="text-xs text-gray-400 truncate">{user.agency}</p>
+          )}
         </div>
+
+        {/* Sign out */}
+        <button
+          onClick={() => setConfirmingLogout(true)}
+          title={!expanded ? 'Sign Out' : undefined}
+          className={[
+            'h-10 rounded-full flex items-center transition-all duration-300 ease-in-out mx-2 overflow-hidden',
+            expanded ? 'px-3 gap-3' : 'w-10 justify-center gap-0',
+            'bg-white/80 text-gray-400 hover:text-red-500 hover:bg-red-50',
+          ].join(' ')}
+        >
+          <span className="shrink-0"><LogoutIcon /></span>
+          <span className={[
+            'text-sm font-medium whitespace-nowrap transition-opacity duration-300',
+            expanded ? 'opacity-100' : 'opacity-0 w-0',
+          ].join(' ')}>Sign Out</span>
+        </button>
       </aside>
     </>
   )
